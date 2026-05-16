@@ -16,6 +16,12 @@ from langchain_community.vectorstores import Chroma
 
 # Folder PDF
 DATA_FOLDER = Path("Data")
+DATA_SUBFOLDERS = [
+    "Contoh Soal",
+    "Empat Pilar MPR RI",
+    "TAP MPR",
+    "UUD",
+]
 
 # Folder penyimpanan ChromaDB
 VECTOR_DB_DIR = Path("vectordb")
@@ -52,13 +58,17 @@ def preprocess_text(text):
 
     return text.strip()
 
-def get_document_type(file_name):
+def get_document_type(file_name, folder_name):
     normalized_name = file_name.lower()
+    normalized_folder = folder_name.lower()
 
-    if "uud" in normalized_name:
+    if "contoh soal" in normalized_folder:
+        return "CONTOH_SOAL"
+
+    if "uud" in normalized_folder or "uud" in normalized_name:
         return "UUD"
 
-    if "tap" in normalized_name:
+    if "tap mpr" in normalized_folder or "tap" in normalized_name:
         return "TAP_MPR"
 
     return "EMPAT_PILAR"
@@ -72,19 +82,33 @@ print("MEMBACA DOKUMEN PDF")
 print("=" * 60)
 
 all_docs = []
-pdf_files = sorted(DATA_FOLDER.glob("*.pdf"))
 
 if not DATA_FOLDER.exists():
     raise FileNotFoundError(f"Folder data tidak ditemukan: {DATA_FOLDER}")
 
+data_folders = [DATA_FOLDER / folder_name for folder_name in DATA_SUBFOLDERS]
+missing_folders = [folder for folder in data_folders if not folder.exists()]
+
+if missing_folders:
+    missing_folder_names = ", ".join(str(folder) for folder in missing_folders)
+    raise FileNotFoundError(f"Folder data tidak ditemukan: {missing_folder_names}")
+
+pdf_files = sorted(
+    file_path
+    for folder in data_folders
+    for file_path in folder.rglob("*.pdf")
+)
+
 if not pdf_files:
-    raise FileNotFoundError(f"Tidak ada file PDF di folder: {DATA_FOLDER}")
+    folder_names = ", ".join(str(folder) for folder in data_folders)
+    raise FileNotFoundError(f"Tidak ada file PDF di folder: {folder_names}")
 
 for file_path in pdf_files:
 
     file_name = file_path.name
+    source_folder = file_path.parent.name
 
-    print(f"\nLoading file: {file_name}")
+    print(f"\nLoading file: {source_folder}/{file_name}")
 
     try:
 
@@ -102,11 +126,14 @@ for file_path in pdf_files:
             # metadata source file
             doc.metadata["source_file"] = file_name
 
+            # metadata folder sumber
+            doc.metadata["source_folder"] = source_folder
+
             # metadata nomor halaman
             doc.metadata["page_number"] = doc.metadata.get("page", 0) + 1
 
             # metadata jenis dokumen
-            doc.metadata["document_type"] = get_document_type(file_name)
+            doc.metadata["document_type"] = get_document_type(file_name, source_folder)
 
         all_docs.extend(docs)
 
