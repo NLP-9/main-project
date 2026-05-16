@@ -1,5 +1,6 @@
 # main-project
-Sistem Penilai Otomatis Lomba Cerdas Cermat Berbasis RAG (Retrieval-Augmented Generation) untuk Mitigasi Human Error dan Bias Penjurian
+
+Sistem Penilai Otomatis Lomba Cerdas Cermat Berbasis RAG (Retrieval-Augmented Generation) untuk Mitigasi Human Error dan Bias Penjurian.
 
 # Setup Project
 
@@ -16,33 +17,48 @@ cd main-project
 pip install -r requirements.txt
 ```
 
-## 3. Jalankan Ingest
+## 3. Vector Database
 
-Script ini digunakan untuk membuat vector database dari data pada folder `Data`.
+Folder `vectordb/` sudah disertakan di repository, jadi tidak perlu menjalankan proses ingest ulang untuk mulai mengembangkan project ini.
 
-```bash
-python ingest.py
+Pastikan setelah clone repository, folder berikut ada:
+
+```plaintext
+vectordb/
 ```
 
-## 4. Retrieval Test (Opsional)
+## 4. Retrieval Test
 
-Digunakan untuk testing semantic retrieval.
+Digunakan untuk testing semantic retrieval dari vector database yang sudah tersedia.
 
 ```bash
 python retrieval_test.py
 ```
 
-# Catatan
+## 5. Jalankan Ingest Ulang Jika Diperlukan
 
-Folder berikut tidak disertakan karena merupakan hasil generate lokal:
+Script `ingest.py` hanya perlu dijalankan jika isi folder `Data` berubah atau ingin membuat ulang vector database.
+
+Data yang digunakan berasal dari folder:
 
 ```plaintext
-__pycache__/
-vectordb/
+Data/
+|-- Contoh Soal/
+|-- Empat Pilar MPR RI/
+|-- TAP MPR/
+`-- UUD/
 ```
 
-Jika vector database belum ada, jalankan kembali:
+Untuk membuat ulang `vectordb/`, jalankan:
 
 ```bash
 python ingest.py
+```
+
+# Catatan
+
+Folder berikut tidak perlu di-push karena merupakan hasil generate lokal Python:
+
+```plaintext
+__pycache__/
 ```
