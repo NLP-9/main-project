@@ -8,6 +8,8 @@ from langchain_groq import ChatGroq
 import os
 from dotenv import load_dotenv
 
+from retrieval_core import EMBEDDING_MODEL, build_embedding_kwargs, hybrid_search
+
 load_dotenv()
 
 app = FastAPI(title="SmartJuri-AI API Engine")
@@ -21,12 +23,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 COLLECTION_NAME = "dokumen_kewarganegaraan"
 
-embedding_models = HuggingFaceEmbeddings(
-    model_name=EMBEDDING_MODEL_NAME
-)
+embedding_models = HuggingFaceEmbeddings(**build_embedding_kwargs())
 
 db = Chroma(
     persist_directory="vectordb",
@@ -50,8 +49,8 @@ async def evaluate_answer(req: EvaluationRequest):
         raise HTTPException(status_code=400, detail="Pertanyaan dan jawaban wajib diisi")
     
     try:
-        # 1. RAG Retrieval dengan k=4 untuk mendapatkan konteks yang relevan
-        docs = db.similarity_search(req.pertanyaan, k=4)
+        # 1. RAG Retrieval hybrid agar istilah hukum persis dan makna semantik sama-sama terambil
+        docs = [doc for doc, _ in hybrid_search(db, req.pertanyaan, k=4)]
         context_text = "\n\n".join([
             f"[Sumber: {doc.metadata['source_file']} hal. {doc.metadata['page_number']}]\n{doc.page_content}" 
             for doc in docs

@@ -5,7 +5,14 @@ os.environ["ANONYMIZED_TELEMETRY"] = "False"
 
 import chromadb
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
+
+from retrieval_core import (
+    EMBEDDING_MODEL,
+    build_embedding_kwargs,
+    detect_document_filter,
+    hybrid_search,
+)
 
 # ==================================================
 # KONFIGURASI
@@ -17,23 +24,7 @@ COLLECTION_NAME = "dokumen_kewarganegaraan"
 
 LEGACY_COLLECTION_NAME = "langchain"
 
-EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-
 TOP_K = 3
-
-def detect_document_filter(query):
-    normalized_query = query.lower()
-
-    if "uud" in normalized_query:
-        return {"document_type": "UUD"}
-
-    if "tap" in normalized_query:
-        return {"document_type": "TAP_MPR"}
-
-    if "empat pilar" in normalized_query or "pilar" in normalized_query:
-        return {"document_type": "EMPAT_PILAR"}
-
-    return None
 
 def preview_collection():
     client = chromadb.PersistentClient(path=str(VECTOR_DB_DIR))
@@ -69,9 +60,7 @@ print("=" * 60)
 print("MEMUAT MODEL EMBEDDING")
 print("=" * 60)
 
-embedding_model = HuggingFaceEmbeddings(
-    model_name=EMBEDDING_MODEL
-)
+embedding_model = HuggingFaceEmbeddings(**build_embedding_kwargs())
 
 print(f"\nModel digunakan: {EMBEDDING_MODEL}")
 
@@ -135,10 +124,11 @@ while True:
     # RETRIEVAL
     # ==================================================
 
-    results = db.similarity_search_with_score(
+    results = hybrid_search(
+        db=db,
         query=query,
         k=TOP_K,
-        filter=search_filter
+        search_filter=search_filter,
     )
 
     print(f"Jumlah hasil ditemukan: {len(results)}\n")

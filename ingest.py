@@ -8,7 +8,9 @@ import chromadb
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
+
+from retrieval_core import EMBEDDING_MODEL, build_embedding_kwargs
 
 # ==================================================
 # KONFIGURASI PROJECT
@@ -29,12 +31,10 @@ VECTOR_DB_DIR = Path("vectordb")
 # Nama collection agar konsisten saat ingest dan retrieval
 COLLECTION_NAME = "dokumen_kewarganegaraan"
 
-# Embedding multilingual terbaik untuk Indo
-EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-
 # Chunking untuk dokumen hukum
-CHUNK_SIZE = 500
-CHUNK_OVERLAP = 100
+# Chunk terlalu kecil sering kehilangan konteks pasal/istilah hukum.
+CHUNK_SIZE = 700
+CHUNK_OVERLAP = 140
 
 # ==================================================
 # PREPROCESSING RINGAN UNTUK RAG
@@ -45,15 +45,15 @@ def preprocess_text(text):
     # lowercase
     text = text.lower()
 
-    # hapus karakter rusak PDF ringan
+    # hapus karakter rusak PDF ringan (TAPI JANGAN AGGRESSIVE)
     text = text.replace("�", "")
     text = text.replace("Â", "")
     text = text.replace("â", "")
     text = text.replace("™", "")
     text = text.replace("œ", "")
-    text = text.replace("~", "")
+    # JANGAN hapus tanda baca penting seperti titik karena mereka penting untuk semantik
 
-    # rapikan whitespace
+    # rapikan whitespace (tapi jaga sedikit formatting)
     text = re.sub(r"\s+", " ", text)
 
     return text.strip()
@@ -135,6 +135,13 @@ for file_path in pdf_files:
             # metadata jenis dokumen
             doc.metadata["document_type"] = get_document_type(file_name, source_folder)
 
+            context_prefix = (
+                f"jenis dokumen: {doc.metadata['document_type']}. "
+                f"sumber: {source_folder} / {file_name}. "
+                f"halaman: {doc.metadata['page_number']}. "
+            )
+            doc.page_content = f"{context_prefix}{doc.page_content}"
+
         all_docs.extend(docs)
 
         print(f"Berhasil load {len(docs)} halaman")
@@ -157,7 +164,7 @@ print("MELAKUKAN TEXT CHUNKING")
 print("=" * 60)
 
 text_splitter = RecursiveCharacterTextSplitter(
-    separators=["\n\n", "\n", ".", " ", ""],
+    separators=["\n\n", "\n", ".", " "],
     chunk_size=CHUNK_SIZE,
     chunk_overlap=CHUNK_OVERLAP
 )
@@ -193,9 +200,7 @@ print("\n" + "=" * 60)
 print("MEMUAT MODEL EMBEDDING")
 print("=" * 60)
 
-embedding_model = HuggingFaceEmbeddings(
-    model_name=EMBEDDING_MODEL
-)
+embedding_model = HuggingFaceEmbeddings(**build_embedding_kwargs())
 
 print(f"\nModel digunakan: {EMBEDDING_MODEL}")
 
@@ -216,12 +221,31 @@ if COLLECTION_NAME in existing_collections:
     print("Menghapus collection lama agar hasil ingest tidak duplikat.")
     client.delete_collection(COLLECTION_NAME)
 
-vectorstore = Chroma.from_documents(
-    documents=chunks,
-    embedding=embedding_model,
+# Buat Chroma vectorstore kosong lalu tambahkan dokumen secara batch
+vectorstore = Chroma(
     persist_directory=str(VECTOR_DB_DIR),
-    collection_name=COLLECTION_NAME
+    embedding_function=embedding_model,
+    collection_name=COLLECTION_NAME,
 )
+
+# Batasi ukuran batch agar tidak melebihi batas maksimal server Chroma
+# Nilai ini lebih kecil dari error yang muncul (5461). Gunakan margin aman.
+BATCH_SIZE = 2000
+total = len(chunks)
+print(f"\nMenambahkan {total} chunk ke collection dalam batch berukuran {BATCH_SIZE}...")
+
+for start in range(0, total, BATCH_SIZE):
+    end = min(start + BATCH_SIZE, total)
+    batch = chunks[start:end]
+    print(f"  Menambahkan batch {start // BATCH_SIZE + 1}: indeks {start}-{end-1} (jumlah {len(batch)})")
+    vectorstore.add_documents(batch)
+
+# Pastikan perubahan dipersist
+try:
+    vectorstore.persist()
+except Exception:
+    # Be tolerant terhadap implementasi Chroma yang mungkin menyimpan otomatis
+    pass
 
 print("\nVector Database berhasil dibuat!")
 
