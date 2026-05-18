@@ -60,7 +60,6 @@ python ingest.py
 ## 6. Jalankan Backend: main.py
 
 ```bash
-cd main-project
 python main.py
 ```
 
