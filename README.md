@@ -11,9 +11,11 @@ git clone https://github.com/NLP-9/main-project.git
 cd main-project
 ```
 
-## 2. Install Dependency
+## 2. Buat venv (opsional) dan Install Dependency
 
 ```bash
+(opsional) python -m venv venv
+(opsional) venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
@@ -55,10 +57,24 @@ Untuk membuat ulang `vectordb/`, jalankan:
 python ingest.py
 ```
 
-# Catatan
+## 6. Jalankan Backend: main.py
 
-Folder berikut tidak perlu di-push karena merupakan hasil generate lokal Python:
-
-```plaintext
-__pycache__/
+```bash
+cd main-project
+python main.py
 ```
+
+Buka localhost:8000/docs
+
+## 7. Jalankan Frontend
+
+Buka terminal baru (ctrl + shift + 5)
+
+```bash
+cd smartjuri-frontend
+npm i
+npm lucide-react
+npm run dev
+```
+
+Buka localhost:3000
