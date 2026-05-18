@@ -23,15 +23,25 @@ pip install -r requirements.txt
 
 Folder `vectordb/` sudah disertakan di repository, jadi tidak perlu menjalankan proses ingest ulang untuk mulai mengembangkan project ini.
 
+Vector database saat ini dibuat dengan konfigurasi retrieval terbaru:
+
+- Model embedding: `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`
+- Chunk size: `700`
+- Chunk overlap: `140`
+- Collection name: `dokumen_kewarganegaraan`
+- Retrieval: hybrid search dari `retrieval_core.py` (semantic + keyword/phrase matching + query expansion)
+
 Pastikan setelah clone repository, folder berikut ada:
 
 ```plaintext
 vectordb/
+|-- chroma.sqlite3
+`-- <folder-index-aktif>/
 ```
 
 ## 4. Retrieval Test
 
-Digunakan untuk testing semantic retrieval dari vector database yang sudah tersedia.
+Digunakan untuk testing hybrid retrieval dari vector database yang sudah tersedia.
 
 ```bash
 python retrieval_test.py
@@ -40,6 +50,8 @@ python retrieval_test.py
 ## 5. Jalankan Ingest Ulang Jika Diperlukan
 
 Script `ingest.py` hanya perlu dijalankan jika isi folder `Data` berubah atau ingin membuat ulang vector database.
+
+Jika model embedding belum ada di cache lokal, proses pertama kali bisa mengunduh model dari HuggingFace. Jika ingin menjalankan mode offline setelah model tersedia, set environment variable `HF_HUB_OFFLINE=1` dan `TRANSFORMERS_OFFLINE=1`.
 
 Data yang digunakan berasal dari folder:
 
