@@ -68,6 +68,9 @@ Buka localhost:8000/docs
 ## 7. Jalankan Frontend
 
 Buka terminal baru (ctrl + shift + 5)
+deactivate venv dulu kalo tadi pake venv
+
+ketik aja deactivate
 
 ```bash
 cd smartjuri-frontend
