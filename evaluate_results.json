@@ -1,0 +1,576 @@
+{
+  "summary": {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "top_k": 5,
+    "n_queries": 10,
+    "avg_hit_rate@1": 0.4,
+    "avg_hit_rate@3": 0.5,
+    "avg_hit_rate@5": 0.6,
+    "avg_mrr": 0.47,
+    "avg_ndcg@3": 0.3531,
+    "avg_ndcg@5": 0.3872,
+    "avg_semantic_similarity": 0.4475
+  },
+  "per_query": [
+    {
+      "id": 1,
+      "pertanyaan": "Siapakah yang berwenang mengubah dan menetapkan Undang-Undang Dasar?",
+      "kunci_jawaban": "Majelis Permusyawaratan Rakyat (MPR) berwenang mengubah dan menetapkan Undang-Undang Dasar.",
+      "expected_doc_type": "UUD",
+      "latency_s": 0.419,
+      "hit@1": 1,
+      "hit@3": 1,
+      "hit@5": 1,
+      "mrr": 1.0,
+      "ndcg@3": 1.0,
+      "ndcg@5": 1.0,
+      "semantic_similarity_top1": 0.5939,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 8.12,
+          "doc_type": "UUD",
+          "source_file": "UUD NRI 1945.pdf",
+          "page": 131,
+          "content_preview": "memegang teguh undang— undang dasar dan menjalankan segala undang-undang dan peraturannya dengan selurus-lurusnya serta berbakti kepada nusa : perubahan pertama : perubahan kedua : perubahan ketiga **"
+        },
+        {
+          "rank": 2,
+          "score_l2": 8.4295,
+          "doc_type": "UUD",
+          "source_file": "UUD NRI 1945.pdf",
+          "page": 174,
+          "content_preview": "20998636_buku undang-undang dasar nri 1945_t-169(3) untuk mengubah pasal-pasal undang—undang dasar, sidang majelis permusyawaratan rakyat dihadiri oleh sekurang-kurangnya 2/3 dari jumlah anggota majel"
+        },
+        {
+          "rank": 3,
+          "score_l2": 8.5806,
+          "doc_type": "UUD",
+          "source_file": "UUD_1945_Perubahan 4.pdf",
+          "page": 11,
+          "content_preview": ".  (2) ketentuan lebih lanjut mengenai badan pemeriksa keuangan diatur dengan undang-undang.   = perubahan pertama,  = perubahan kedua,  = perubahan ketiga,  = perubahan keempat 22bab "
+        },
+        {
+          "rank": 4,
+          "score_l2": 9.1281,
+          "doc_type": "UUD",
+          "source_file": "UUD NRI 1945.pdf",
+          "page": 113,
+          "content_preview": "20998636_buku undang-undang dasar nri 1945_t-108(2) (3) (4) (5) setiap usul perubahan pasal—pasal undang- undang dasar diajukan secara tertulis dan ditunjukkan dengan jelas bagian yang diusulkan untuk"
+        },
+        {
+          "rank": 5,
+          "score_l2": 9.2037,
+          "doc_type": "UUD",
+          "source_file": "UUD_1945_Perubahan 4.pdf",
+          "page": 12,
+          "content_preview": " = perubahan pertama,  = perubahan kedua,  = perubahan ketiga,  = perubahan keempat 23oleh hakim agung.  (5) susunan, kedudukan, keanggotaan, dan hukum acara mahkamah agung serta badan pe"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "pertanyaan": "Berapa jumlah anggota Dewan Perwakilan Rakyat yang ditetapkan dalam UUD 1945?",
+      "kunci_jawaban": "Jumlah anggota DPR diatur oleh undang-undang.",
+      "expected_doc_type": "UUD",
+      "latency_s": 0.047,
+      "hit@1": 0,
+      "hit@3": 0,
+      "hit@5": 1,
+      "mrr": 0.2,
+      "ndcg@3": 0.0,
+      "ndcg@5": 0.2372,
+      "semantic_similarity_top1": 0.5561,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 9.0863,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Soal_Jawaban_LCC_4_Pilar_Kebangsaan.pdf",
+          "page": 2,
+          "content_preview": ". 14 pengesahan hasil amandemen ke -4 uud nri 1945 dilaksanakan pada … . ✔ 10 agustus 2002. 15 pada hakikatnya landasan hukum yang menjelaskan tentang kewajiban dasar warga negara dalam menjunjung tin"
+        },
+        {
+          "rank": 2,
+          "score_l2": 9.3908,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Ringkasan_Empat_Pilar_MPR_RI.pdf",
+          "page": 8,
+          "content_preview": "lima sila pancasila sebagai dasar penyelenggaraan negara termaktub dalam alinea keempat pembukaan uud 1945. e. susunan lembaga negara menurut uud nri 1945 majelis permusyawaratan rakyat (mpr) - bab ii"
+        },
+        {
+          "rank": 3,
+          "score_l2": 10.3703,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Kumpulan-Soal-Lomba-Cerdas-Cermat-LCC-4-Pilar-MPR-RI.pdf",
+          "page": 57,
+          "content_preview": ".485 jawaban: s alah. sesuai dengan undang -undang nomor 16 tahun 1969 tentang susunan dan kedudukan majelis permusyawaratan rakyat pasal 8 ayat (3), dewan perwakilan rakyat dan dewan perwakilan rakya"
+        },
+        {
+          "rank": 4,
+          "score_l2": 11.3356,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "soal_jawaban_4_pilar_kebangsaan.pdf",
+          "page": 1,
+          "content_preview": ".\" tercantum dalam uud nri tahun 1945 pasal .... ■ pasal 21 q7. pasal 22c uud nri tahun 1945 mengatur dewan perwakilan daerah. dari pilihan: (1) anggota dpd dipilih dari setiap provinsi melalui pemilu"
+        },
+        {
+          "rank": 5,
+          "score_l2": 11.5956,
+          "doc_type": "UUD",
+          "source_file": "UUD NRI 1945.pdf",
+          "page": 68,
+          "content_preview": "20998636_buku undang-undang dasar nri 1945_t-63(1) (2) (3) (5) (1) (2) pasal 19 anggota dewan perwakilan rakyat dipilih melalui pemilihan umum. susunan dewan perwakilan rakyat diatur dengan undang-und"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "pertanyaan": "Apa yang dimaksud dengan Pancasila sebagai dasar negara?",
+      "kunci_jawaban": "Pancasila adalah dasar negara Republik Indonesia yang menjadi landasan penyelenggaraan negara.",
+      "expected_doc_type": "EMPAT_PILAR",
+      "latency_s": 0.034,
+      "hit@1": 1,
+      "hit@3": 1,
+      "hit@5": 1,
+      "mrr": 1.0,
+      "ndcg@3": 0.7654,
+      "ndcg@5": 0.8048,
+      "semantic_similarity_top1": 0.6414,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 8.8391,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Ringkasan_Empat_Pilar_MPR_RI.pdf",
+          "page": 3,
+          "content_preview": ". pancasila sebagai ideologi negara dapat dimaknai sebagai sistem kehidupan nasional yang meliputi aspek etika/moral, politik, ekonomi, sosial budaya, dan pertahanan keamanan dalam rangka pencapaian c"
+        },
+        {
+          "rank": 2,
+          "score_l2": 8.9408,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Ringkasan_Empat_Pilar_MPR_RI.pdf",
+          "page": 3,
+          "content_preview": "pilar pertama: pancasila sebagai dasar dan ideologi negara pancasila sebagai dasar dan ideologi negara a. pengertian dan kedudukan pancasila pancasila sebagai dasar negara berarti pancasila menjadi da"
+        },
+        {
+          "rank": 3,
+          "score_l2": 10.1519,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Kumpulan-Soal-Lomba-Cerdas-Cermat-LCC-4-Pilar-MPR-RI.pdf",
+          "page": 88,
+          "content_preview": ". ungkap an itu digunakan untuk menjelaskan bahwa negara kita adalah negara kesatuan yang kedaulatan negara berada di tangan pusat. hal itu konsisten dengan kesepakatan untuk tetap mempertahankan bent"
+        },
+        {
+          "rank": 4,
+          "score_l2": 11.0998,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Panduan Permasyarakatan.pdf",
+          "page": 25,
+          "content_preview": ". menyémpumakan annan dasar mengenai tatanan negara dalam mencapai tujuan nasional yang tertuang dalam pembukaan undang-undang dasar negara republik indonesia tahun 1945 dan memperkokoh negara kcsatua"
+        },
+        {
+          "rank": 5,
+          "score_l2": 11.5127,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "soal_jawaban_4_pilar_kebangsaan.pdf",
+          "page": 6,
+          "content_preview": ". selain sebagai dasar negara, pancasila juga berfungsi sebagai moral pembangunan yang berarti .... ■ pancasila dipergunakan sebagai kerangka, acuan, tolak ukur dan tujuan dari pembangunan. q81. komit"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "pertanyaan": "Sebutkan sila-sila dalam Pancasila!",
+      "kunci_jawaban": "Ketuhanan Yang Maha Esa, Kemanusiaan yang adil dan beradab, Persatuan Indonesia, Kerakyatan yang dipimpin oleh hikmat kebijaksanaan dalam permusyawaratan perwakilan, Keadilan sosial bagi seluruh rakyat Indonesia.",
+      "expected_doc_type": "EMPAT_PILAR",
+      "latency_s": 0.04,
+      "hit@1": 1,
+      "hit@3": 1,
+      "hit@5": 1,
+      "mrr": 1.0,
+      "ndcg@3": 0.6131,
+      "ndcg@5": 0.6131,
+      "semantic_similarity_top1": 0.1818,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 6.8436,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Panduan Permasyarakatan.pdf",
+          "page": 14,
+          "content_preview": "."
+        },
+        {
+          "rank": 2,
+          "score_l2": 6.8436,
+          "doc_type": "UUD",
+          "source_file": "UUD NRI 1945.pdf",
+          "page": 8,
+          "content_preview": "."
+        },
+        {
+          "rank": 3,
+          "score_l2": 7.3597,
+          "doc_type": "TAP_MPR",
+          "source_file": "TAPMPR_NO_IIIMPR2000_2000.pdf",
+          "page": 5,
+          "content_preview": "ttd. drs. h.a. nazri adlani 5 / 5"
+        },
+        {
+          "rank": 4,
+          "score_l2": 7.6973,
+          "doc_type": "TAP_MPR",
+          "source_file": "TAPMPR_NO_VIIMPR2000_2000.pdf",
+          "page": 1,
+          "content_preview": ". ketetapan majelis permusyawaratan rakyat republik indonesia nomor i/mpr/2000 tentang perubahan 1 / 6"
+        },
+        {
+          "rank": 5,
+          "score_l2": 7.7106,
+          "doc_type": "TAP_MPR",
+          "source_file": "TAPMPR_NO_IIMPR1983_1983.pdf",
+          "page": 2,
+          "content_preview": ". ditetapkan di jakarta, pada tanggal 9 maret 1983 2 / 3"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "pertanyaan": "Apa isi Pasal 1 ayat 1 UUD 1945?",
+      "kunci_jawaban": "Negara Indonesia ialah Negara Kesatuan yang berbentuk Republik.",
+      "expected_doc_type": "UUD",
+      "latency_s": 0.035,
+      "hit@1": 0,
+      "hit@3": 0,
+      "hit@5": 0,
+      "mrr": 0.0,
+      "ndcg@3": 0.0,
+      "ndcg@5": 0.0,
+      "semantic_similarity_top1": 0.1909,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 9.5281,
+          "doc_type": "TAP_MPR",
+          "source_file": "TAPMPRS_NO_IMPRS1960_1960.pdf",
+          "page": 1,
+          "content_preview": ". uud 1945; a. pasal 1 ayat 2 yang menentukan bahwa “kedaulatan adalah ditangan rakyat dan dilakukan sepenuhnya oleh majelis permusyawaratan rakyat\"; b. pasal 3 jo pasal iv aturan peralihan; c. pasal "
+        },
+        {
+          "rank": 2,
+          "score_l2": 11.9337,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "soal_jawaban_4_pilar_kebangsaan.pdf",
+          "page": 4,
+          "content_preview": ". pernyataan ini terdapat di dalam uud nri tahun 1945 pasal .... ■ pasal 22c ayat 2 q53. kewenangan dan tugas dpd dari pilihan: (1) mengajukan ruu terkait otda, (2) mengajukan ruu terkait pemekaran da"
+        },
+        {
+          "rank": 3,
+          "score_l2": 12.0952,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "soal_jawaban_4_pilar_kebangsaan.pdf",
+          "page": 5,
+          "content_preview": ". hal ini merupakan pengamalan uud nri tahun 1945 terutama pasal .... ■ pasal 28e q61. pelaksanaan hak asasi manusia dijamin dalam undang-undang dasar terutama .... ■ bab xa q62. pasal 28b uud nri tah"
+        },
+        {
+          "rank": 4,
+          "score_l2": 12.3608,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "soal_jawaban_4_pilar_kebangsaan.pdf",
+          "page": 3,
+          "content_preview": ". ■ (1), (3) dan (4) q27. di dalam pasal 30 ayat 1 uud nri tahun 1945 bahwa .... ■ tiap-tiap warga negara berhak dan wajib ikut serta dalam usaha pertahanan dan keamanan negara. q28. di dalam pasal 30"
+        },
+        {
+          "rank": 5,
+          "score_l2": 12.4639,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "soal_jawaban_4_pilar_kebangsaan.pdf",
+          "page": 2,
+          "content_preview": ".\" dimuat dalam uud nri tahun 1945 .... ■ pasal 23f ayat 1 q17. dalam pasal 23g ayat 1 uud nri tahun 1945 bahwa .... ■ badan pemeriksa keuangan berkedudukan di ibu kota negara, dan memiliki perwakilan"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "pertanyaan": "Apa yang dimaksud Bhinneka Tunggal Ika?",
+      "kunci_jawaban": "Bhinneka Tunggal Ika berarti berbeda-beda tetapi tetap satu, merupakan semboyan negara Indonesia.",
+      "expected_doc_type": "EMPAT_PILAR",
+      "latency_s": 0.045,
+      "hit@1": 0,
+      "hit@3": 1,
+      "hit@5": 1,
+      "mrr": 0.5,
+      "ndcg@3": 0.3869,
+      "ndcg@5": 0.3869,
+      "semantic_similarity_top1": 0.3756,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 16.9324,
+          "doc_type": "TAP_MPR",
+          "source_file": "TAP MPR RI.pdf",
+          "page": 232,
+          "content_preview": ". bersatu meningkatnya semangat persatuan dan kerukunan bangsa; meningkatnya toleransi, kepedulian, dan tanggung jawab sosial; berkembangnya budaya dan perilaku sportif serta menghargai dan menerima p"
+        },
+        {
+          "rank": 2,
+          "score_l2": 17.778,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Panduan Permasyarakatan.pdf",
+          "page": 62,
+          "content_preview": "20998640_bk panduan pemasyarakatan uud nri thn 45_t -0495. disimpulkan bahwa kuatnya semangat dan ikatan kebersama'an, kekelua'rgaan, persah'abatan, persaudaraan, serta toleransi dan jiwa besar antara"
+        },
+        {
+          "rank": 3,
+          "score_l2": 18.3725,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Kumpulan-Soal-Lomba-Cerdas-Cermat-LCC-4-Pilar-MPR-RI.pdf",
+          "page": 86,
+          "content_preview": ". 215. terwujudnya hubungan harmonis antar manusia indonesia tanpa membedakan latar belakang budaya, suku, ras, ag ama dan lain -lain adalah salah satu indikator bersatu sebagaimana diatur dalam ketet"
+        },
+        {
+          "rank": 4,
+          "score_l2": 18.4418,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Kumpulan-Soal-Lomba-Cerdas-Cermat-LCC-4-Pilar-MPR-RI.pdf",
+          "page": 86,
+          "content_preview": ". terwujudnya hubungan harmonis antar manusia in donesia tanpa membedakan latar belakang budaya, suku, ras, agama dan lain -lain adalah salah satu indikator manusiawi sebagaimana diatur dalam ketetapa"
+        },
+        {
+          "rank": 5,
+          "score_l2": 18.7622,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Kumpulan-Soal-Lomba-Cerdas-Cermat-LCC-4-Pilar-MPR-RI.pdf",
+          "page": 77,
+          "content_preview": ". 170. meningkatkan kerukunan sosial antar dan antara pemeluk agama, suku, dan kelompok -kelompok masyarakat lainnya melalui dialog dan kerja sama dengan prinsip kebersamaan, kesetaraan, toleransi dan"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "pertanyaan": "Bagaimana cara mengubah pasal-pasal UUD 1945?",
+      "kunci_jawaban": "Usul perubahan pasal-pasal UUD dapat diagendakan dalam sidang MPR jika diajukan oleh sekurang-kurangnya 1/3 dari jumlah anggota MPR.",
+      "expected_doc_type": "UUD",
+      "latency_s": 0.038,
+      "hit@1": 0,
+      "hit@3": 0,
+      "hit@5": 0,
+      "mrr": 0.0,
+      "ndcg@3": 0.0,
+      "ndcg@5": 0.0,
+      "semantic_similarity_top1": 0.4548,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 10.8677,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Panduan Permasyarakatan.pdf",
+          "page": 68,
+          "content_preview": ". d. hasil perubahan dan naskah asli uud 1945 setelah melalui tingkat—tingkat pembicaraan sesuai deng'an ketentuan pasal 92 peratin'an tata tertib mpr, dalam beberapa kali sidang mfr telah mengambil p"
+        },
+        {
+          "rank": 2,
+          "score_l2": 10.9593,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Panduan Permasyarakatan.pdf",
+          "page": 7,
+          "content_preview": "20998640_bk panduan pemasyarakatan uud nri thn 45_r m-6_r1vi daftar isi kata pengantar daftar isi sambutan ketua mpr ri bab i pendahuluan bab ii undang undang dasar negara republik indonesia tahun 194"
+        },
+        {
+          "rank": 3,
+          "score_l2": 11.2952,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Panduan Permasyarakatan.pdf",
+          "page": 26,
+          "content_preview": ". b; dasar yuridis dan kesepakatan dasar dalam pembahan uud1945 i. dasar aidis perubahan uud 1945 . mpr melakukan p'erubahan undang-undang das'ar negara republik- indonesia tahun 19345 dengan berpedom"
+        },
+        {
+          "rank": 4,
+          "score_l2": 11.3676,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Panduan Permasyarakatan.pdf",
+          "page": 33,
+          "content_preview": ". c. proses p'erubahan uud 1945 1. awal perubahan uud 1945 tuntutan reformasi yang menghendaki agar undang-. undang dasar negara republik indonesia tahun 1945 diubah, sebenamya telah diawali dalam sid"
+        },
+        {
+          "rank": 5,
+          "score_l2": 11.535,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Panduan Permasyarakatan.pdf",
+          "page": 5,
+          "content_preview": ". buku uud nri tahun 1945 yang terdiri dari naskah asli dan naskah perubahan uud nri tahun 1945 dimuat dalam susunan uud nri tahun 1945 yang terdiri atas lima bagian, yakni: 1. undang-undang dasar neg"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "pertanyaan": "Apa fungsi NKRI sebagai bentuk negara menurut UUD 1945?",
+      "kunci_jawaban": "Negara Kesatuan Republik Indonesia merupakan negara yang tidak dapat dibagi-bagi wilayahnya.",
+      "expected_doc_type": "UUD",
+      "latency_s": 0.035,
+      "hit@1": 0,
+      "hit@3": 0,
+      "hit@5": 0,
+      "mrr": 0.0,
+      "ndcg@3": 0.0,
+      "ndcg@5": 0.0,
+      "semantic_similarity_top1": 0.3335,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 7.5975,
+          "doc_type": "TAP_MPR",
+          "source_file": "TAP MPR RI.pdf",
+          "page": 94,
+          "content_preview": "20998638_ketetapan mpr ri nomor 1-mpr-2003_t-87negara lainnya, sehingga penyelenggaraan negara berlangsung sesuai dengan undang-undang dasar 1945. (1) (2) (1) (2) pasal 2 penyelenggara negara pada lem"
+        },
+        {
+          "rank": 2,
+          "score_l2": 7.6652,
+          "doc_type": "EMPAT_PILAR",
+          "source_file": "Ringkasan_Empat_Pilar_MPR_RI.pdf",
+          "page": 8,
+          "content_preview": "lima sila pancasila sebagai dasar penyelenggaraan negara termaktub dalam alinea keempat pembukaan uud 1945. e. susunan lembaga negara menurut uud nri 1945 majelis permusyawaratan rakyat (mpr) - bab ii"
+        },
+        {
+          "rank": 3,
+          "score_l2": 8.6084,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Kumpulan-Soal-Lomba-Cerdas-Cermat-LCC-4-Pilar-MPR-RI.pdf",
+          "page": 88,
+          "content_preview": ". ungkap an itu digunakan untuk menjelaskan bahwa negara kita adalah negara kesatuan yang kedaulatan negara berada di tangan pusat. hal itu konsisten dengan kesepakatan untuk tetap mempertahankan bent"
+        },
+        {
+          "rank": 4,
+          "score_l2": 9.0409,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "soal_jawaban_4_pilar_kebangsaan.pdf",
+          "page": 5,
+          "content_preview": ". hal itu merupakan amanat dari uud nri tahun 1945 terutama pasal .... ■ pasal 31 ayat 4 q66. salah satu cara untuk memajukan kebudayaan nasional di tengah peradaban dunia sesuai pasal 32 uud nri tahu"
+        },
+        {
+          "rank": 5,
+          "score_l2": 9.0695,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Soal_Jawaban_LCC_4_Pilar_Kebangsaan.pdf",
+          "page": 1,
+          "content_preview": "soal & jawaban lcc 4 pilar kebangsaan 52 soal | pancasila • uud nri 1945 • nkri • bhinneka tunggal ika no soal jawaban 1 alasan mpr -ri melakukan amandemen uud 1945 adalah … ✔ kekuasaan presiden terla"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "pertanyaan": "Jelaskan makna Pembukaan UUD 1945 alinea keempat!",
+      "kunci_jawaban": "Alinea keempat memuat tujuan negara, bentuk negara, dan dasar negara yaitu Pancasila.",
+      "expected_doc_type": "EMPAT_PILAR",
+      "latency_s": 0.037,
+      "hit@1": 0,
+      "hit@3": 0,
+      "hit@5": 0,
+      "mrr": 0.0,
+      "ndcg@3": 0.0,
+      "ndcg@5": 0.0,
+      "semantic_similarity_top1": 0.4171,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 8.9654,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Soal_Jawaban_LCC_4_Pilar_Kebangsaan.pdf",
+          "page": 3,
+          "content_preview": "no soal jawaban orang lain. 4.musyawarah untuk mufakat dicapai dalam permusyawaratan wakil -wakil rakyat. yang merupakan implementasi dari nilai kerakyatan terdapat pada nomor … 22 pada hakikatnya bag"
+        },
+        {
+          "rank": 2,
+          "score_l2": 9.2325,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Soal_Jawaban_LCC_4_Pilar_Kebangsaan.pdf",
+          "page": 1,
+          "content_preview": "soal & jawaban lcc 4 pilar kebangsaan 52 soal | pancasila • uud nri 1945 • nkri • bhinneka tunggal ika no soal jawaban 1 alasan mpr -ri melakukan amandemen uud 1945 adalah … ✔ kekuasaan presiden terla"
+        },
+        {
+          "rank": 3,
+          "score_l2": 9.6477,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Soal_Jawaban_LCC_4_Pilar_Kebangsaan.pdf",
+          "page": 1,
+          "content_preview": ". 3 makna yang terkandung dalam alinea kedua pembukaan uud nri 1945 adalah … ✔ berhasilnya pembangunan nasional sangat ditentukan oleh persatuan segenap bangsa indonesia. 4 hubungan antara pokok pikir"
+        },
+        {
+          "rank": 4,
+          "score_l2": 9.9099,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Soal_Jawaban_LCC_4_Pilar_Kebangsaan.pdf",
+          "page": 1,
+          "content_preview": ". 5 pokok pikiran dalam pembukaan uud nri 1945 yang menyatakan bahwa kemerdekaan bangsa indonesia diperoleh atas berkat rahmat tuhan yme adalah yang… ✔ pokok pikiran keempat. 6 salah satu kesepakatan "
+        },
+        {
+          "rank": 5,
+          "score_l2": 9.9414,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "Soal_Jawaban_LCC_4_Pilar_Kebangsaan.pdf",
+          "page": 1,
+          "content_preview": ". 10 sistematika uud negara ri tahun 1945 setelah di ubah terdiri atas...... ✔ pembukaan dan pasal -pasal."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "pertanyaan": "Apa kewajiban negara terhadap fakir miskin dan anak terlantar menurut UUD 1945?",
+      "kunci_jawaban": "Fakir miskin dan anak-anak yang terlantar dipelihara oleh negara sesuai Pasal 34 UUD 1945.",
+      "expected_doc_type": "UUD",
+      "latency_s": 0.034,
+      "hit@1": 1,
+      "hit@3": 1,
+      "hit@5": 1,
+      "mrr": 1.0,
+      "ndcg@3": 0.7654,
+      "ndcg@5": 0.8304,
+      "semantic_similarity_top1": 0.7298,
+      "top_results": [
+        {
+          "rank": 1,
+          "score_l2": 7.4253,
+          "doc_type": "UUD",
+          "source_file": "UUD NRI 1945.pdf",
+          "page": 112,
+          "content_preview": "20998636_buku undang-undang dasar nri 1945_t-107(5) (1) (2) (3) (4) (1) ketentuan lebih lanjut mengenai pelaksanaan pasal ini diatur dalam undang—undang. pasal 34 fakir miskin dan anak-anak yang terla"
+        },
+        {
+          "rank": 2,
+          "score_l2": 7.9354,
+          "doc_type": "UUD",
+          "source_file": "UUD NRI 1945.pdf",
+          "page": 21,
+          "content_preview": ". pasal 34 fakir miskin dan anak-anak yang terlantar dipelihara oleh negara. -16-"
+        },
+        {
+          "rank": 3,
+          "score_l2": 8.1748,
+          "doc_type": "CONTOH_SOAL",
+          "source_file": "soal_jawaban_4_pilar_kebangsaan.pdf",
+          "page": 3,
+          "content_preview": ".\" dimuat dalam uud nri tahun 1945 .... ■ pasal 34 ayat 4 q33. \"negara mengembangkan sistem jaminan sosial bagi seluruh rakyat dan memberdayakan masyarakat yang lemah dan tidak mampu sesuai dengan mar"
+        },
+        {
+          "rank": 4,
+          "score_l2": 8.1877,
+          "doc_type": "UUD",
+          "source_file": "UUD NRI 1945.pdf",
+          "page": 171,
+          "content_preview": "20998636_buku undang-undang dasar nri 1945_t-166(5) (1) (2) (3) (4) *) **) ***) berkelanjutan, berwawasan lingkungan, kemandirian, serta dengan menjaga keseimbangan kemajuan dan kesatuan ekonomi nasio"
+        },
+        {
+          "rank": 5,
+          "score_l2": 9.1664,
+          "doc_type": "UUD",
+          "source_file": "UUD NRI 1945.pdf",
+          "page": 171,
+          "content_preview": ". ****) pasal 34 fakir miskin dan anak-anak yang terlantar dipelihara oleh negara. ****) negara mengembangkan sistem jaminan sosial bagi seluruh rakyat dan memberdayakan masyarakat yang lemah dan tida"
+        }
+      ]
+    }
+  ]
+}
