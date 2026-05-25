@@ -1,0 +1,50 @@
+{
+  "summary": {
+    "mode": "manual",
+    "accuracy": 1.0,
+    "passed": 5,
+    "total": 5
+  },
+  "details": [
+    {
+      "question": "Apa isi Pasal 1 ayat 1 UUD 1945?",
+      "score": 10,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 4.109,
+      "reason": "Jawaban peserta sama dengan isi Pasal 1 ayat 1 UUD 1945, meskipun ada sedikit perbedaan redaksi kata, namun maknanya sama"
+    },
+    {
+      "question": "Apa makna Bhinneka Tunggal Ika?",
+      "score": 9,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 3.377,
+      "reason": "Jawaban peserta memiliki makna yang sama dengan kunci jawaban, namun redaksi kata sedikit berbeda"
+    },
+    {
+      "question": "Siapa yang berwenang mengubah UUD?",
+      "score": 10,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 3.492,
+      "reason": "Jawaban peserta 'MPR' memiliki makna yang sama dengan kunci jawaban 'Majelis Permusyawaratan Rakyat (MPR)' yang tercantum dalam dokumen referensi UUD NRI 1945.pdf hal. 84, pasal 3, sehingga diberikan skor maksimal 10."
+    },
+    {
+      "question": "Apa fungsi Pancasila?",
+      "score": 8,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.579,
+      "reason": "Jawaban peserta hanya menyebutkan 'Dasar negara Indonesia' yang kurang lengkap dibandingkan dengan kunci jawaban yang lebih spesifik, yaitu 'Pancasila sebagai dasar dan ideologi negara'. Namun, jawaban peserta masih memiliki kemiripan makna dengan kunci jawaban."
+    },
+    {
+      "question": "Apa makna NKRI?",
+      "score": 10,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 3.356,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat dalam dokumen referensi, yaitu 'Negara Kesatuan Republik Indonesia' yang merupakan bentuk negara yang dipertahankan sejak awal berdirinya negara Indonesia."
+    }
+  ]
+}

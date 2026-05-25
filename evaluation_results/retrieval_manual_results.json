@@ -1,0 +1,62 @@
+{
+  "summary": {
+    "avg_hit@1": 1.0,
+    "avg_mrr": 1.0,
+    "avg_ndcg@5": 1.0,
+    "avg_precision@5": 1.0,
+    "avg_recall@5": 1.0,
+    "avg_similarity": 0.4287
+  },
+  "details": [
+    {
+      "question": "Apa isi Pasal 1 ayat 1 UUD 1945?",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.0,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.127,
+      "latency": 1.084
+    },
+    {
+      "question": "Apa makna Bhinneka Tunggal Ika?",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.0,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.3987,
+      "latency": 0.341
+    },
+    {
+      "question": "Siapa yang berwenang mengubah UUD?",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.0,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.2806,
+      "latency": 0.238
+    },
+    {
+      "question": "Apa fungsi Pancasila?",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.0,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.5761,
+      "latency": 0.397
+    },
+    {
+      "question": "Apa makna NKRI?",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.0,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.761,
+      "latency": 0.362
+    }
+  ]
+}

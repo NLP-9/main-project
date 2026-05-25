@@ -134,3 +134,14 @@ if kosong > 25:
 else:
     print("\n  KESIMPULAN: Vector DB terlihat OK - lanjut ke evaluasi metrik")
 print("=" * 60)
+
+# 9. Pengecekan duplikat chunk
+unique_chunks = set()
+duplicates = 0
+
+for d in sample_50["documents"]:
+    if d in unique_chunks:
+        duplicates += 1
+    unique_chunks.add(d)
+
+print(f"Duplicate chunks: {duplicates}")

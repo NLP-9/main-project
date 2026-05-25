@@ -160,4 +160,8 @@ while True:
         print("\nISI CONTEXT:")
         print(doc.page_content[:1500])
 
+        print(f"\nHybrid Score : {score:.4f}")
+
+        print(f"\nChunk Size : {doc.metadata.get('chunk_size')}")
+
         print("\n")

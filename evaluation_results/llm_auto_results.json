@@ -1,0 +1,90 @@
+{
+  "summary": {
+    "mode": "auto",
+    "accuracy": 1.0,
+    "passed": 10,
+    "total": 10
+  },
+  "details": [
+    {
+      "question": "Jelaskan isi dokumen berikut:\njenis dokumen: CONTOH_SOAL. sumber: Contoh Soal / Dataset_QA_LCC_MPR_RI_2024_2025.pdf. halaman: 1. dataset qa - lomba cerdas cermat empat pilar mpr ri",
+      "score": 8,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.758,
+      "reason": "Jawaban peserta tidak secara eksplisit menyebutkan amandemen UUD NRI 1945, namun menyebutkan kategori pertanyaan jawaban yang terkait dengan UUD NRI 1945, sehingga memiliki kemiripan makna."
+    },
+    {
+      "question": "Jelaskan isi dokumen berikut:\n. sebutkan pasal -pasal yang diamandemen pada tahun 2000! pasal 18, pasal 18a, pasal 18b, pasal 19, pasal 20, pasal 20a, pasal 22a, pasal 22b, pasal 2",
+      "score": 8,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.792,
+      "reason": "Jawaban peserta hampir sama dengan kunci jawaban, namun tidak menyebutkan pasal 28h, pasal 28i, pasal 28j, pasal 30, pasal 36a, pasal 36b, dan pasal 36c yang juga diamandemen pada tahun 2000."
+    },
+    {
+      "question": "Jelaskan isi dokumen berikut:\nfront nasional, penerapan konsep nasakom, konfrontasi dengan malaysia, indonesia keluar dari pbb, politik nefo -oldefo 3 pengetahuan umum timur tengah",
+      "score": 8,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.597,
+      "reason": "Jawaban peserta hampir sama dengan kunci jawaban, namun ada sedikit perbedaan pada kata 'af' yang seharusnya 'afrika'."
+    },
+    {
+      "question": "Jelaskan isi dokumen berikut:\n. sebutkan negara -negara yang terletak di timur tengah! arab saudi, iran, irak, kuwait, qatar, bahrain, oman, yaman, yordania, syria, libanon, uni em",
+      "score": 10,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.535,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, yaitu negara-negara yang terletak di Timur Tengah."
+    },
+    {
+      "question": "Jelaskan isi dokumen berikut:\n. sebutkan nama - nama ibu kota provinsi yang terletak di zona waktu indonesia barat (wib)! jakarta, bandung, serang, semarang, yogyakarta, surabaya, ",
+      "score": 8,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.574,
+      "reason": "Jawaban peserta hampir sama dengan kunci jawaban, namun ada sedikit kesalahan penulisan 'bandar la' yang seharusnya 'bandar lampung'."
+    },
+    {
+      "question": "Jelaskan isi dokumen berikut:\n. sebutkan jenis -jenis hukum di indonesia! hukum pidana, hukum perdata, hukum acara pidana, hukum acara perdata, hukum tata negara, hukum administras",
+      "score": 9,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.541,
+      "reason": "Jawaban peserta hampir sama dengan kunci jawaban, namun ada tambahan '7 pancasila, uud nri 1945, kete' yang tidak relevan dengan pertanyaan tentang jenis-jenis hukum di Indonesia."
+    },
+    {
+      "question": "Jelaskan isi dokumen berikut:\n. sebutkan 10 pilar demokrasi konstitusional indonesia! demokrasi yang berketuhanan yang maha esa, demokrasi dengan kecerdasan, demokrasi yang berkeda",
+      "score": 8,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.811,
+      "reason": "Jawaban peserta hampir sama dengan kunci jawaban, namun tidak menyebutkan 'demokrasi dengan hak asasi manusia', 'demokrasi dengan pengadilan yang merdeka', 'demokrasi dengan otonomi daerah', 'demokrasi dengan kemakmuran', dan 'demokrasi yang berkeadilan sosial' secara lengkap."
+    },
+    {
+      "question": "Jelaskan isi dokumen berikut:\njenis dokumen: CONTOH_SOAL. sumber: Contoh Soal / Dataset_QA_LCC_MPR_RI_2024_2025.pdf. halaman: 2. no. kategori pertanyaan jawaban berdiri tahun 1989.",
+      "score": 8,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 4.988,
+      "reason": "Jawaban peserta menyebutkan tahun berdirinya APEC dengan benar, namun tidak menjawab pertanyaan tentang isi dokumen dan tidak menyebutkan negara-negara anggota APEC secara lengkap dan benar."
+    },
+    {
+      "question": "Jelaskan isi dokumen berikut:\n. sebutkan prasasti -prasasti yang ditemukan di jawa barat! prasasti ciaruteun, prasasti kebon kopi, prasasti pasir awi, prasasti pasir koleangkak, pr",
+      "score": 9,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 4.422,
+      "reason": "Jawaban peserta hampir sama dengan kunci jawaban, namun tidak menyebutkan 'prasasti sadapaingan' secara lengkap."
+    },
+    {
+      "question": "Jelaskan isi dokumen berikut:\n. sebutkan ilmuwan islam yang berhasil mempengaruhi dunia! al khawarizmi, ibnu sina, ibnu khaldun, al zahrawi, abbas ibnu firnas, ibnu al haytham, ahm",
+      "score": 10,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.785,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang ada di dokumen referensi, hanya saja jawaban peserta tidak mencantumkan 'ibnu rusydi' dan 'ibnu battutah' secara lengkap, namun karena jawaban peserta masih mencantumkan 'ibnu r' yang dapat diartikan sebagai 'ibnu rusydi' dan tidak mengubah makna secara keseluruhan, maka skor yang diberikan adalah 10."
+    }
+  ]
+}
