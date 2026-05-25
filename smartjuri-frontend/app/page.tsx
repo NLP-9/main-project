@@ -105,7 +105,7 @@ export default function LCCDashboard() {
     if (SpeechRecognition) {
       const rec = new SpeechRecognition();
       rec.continuous = false;
-      rec.lang = "id-ID"; // Kunci utama pendeteksian Bahasa Indonesia
+      rec.lang = "id-ID";
       rec.interimResults = false;
       rec.maxAlternatives = 1;
       recognitionRef.current = rec;
@@ -171,7 +171,7 @@ export default function LCCDashboard() {
     }
   };
 
-  // LOGIKA VOICE TO TEXT PERTANYAAN
+    // Voice to Text Pertanyaan
   const toggleVoicePertanyaan = () => {
     if (!recognitionRef.current) {
       alert("Browser kamu tidak mendukung fitur Speech Recognition.");
@@ -198,7 +198,7 @@ export default function LCCDashboard() {
     }
   };
 
-  // LOGIKA VOICE TO TEXT JAWABAN KONTESTAN
+  // Voice to Text Kontestan
   const toggleVoiceJawaban = () => {
     if (!recognitionRef.current) {
       alert("Browser kamu tidak mendukung fitur Speech Recognition.");
@@ -292,7 +292,7 @@ export default function LCCDashboard() {
           </div>
           <button 
             onClick={handleSetupGame}
-            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 py-3 rounded-xl font-bold transition-all shadow-lg cursor-pointer"
+            className="w-full bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 py-3 rounded-xl font-bold transition-all shadow-lg cursor-pointer"
           >
             Masuk Arena Lomba
           </button>
@@ -502,7 +502,7 @@ export default function LCCDashboard() {
                 </div>
                 <div className="bg-slate-950/80 p-6 rounded-2xl border border-slate-800/50">
                   <div className="text-[10px] text-indigo-400 font-black uppercase tracking-[0.2em] mb-3">Pertimbangan Semantik</div>
-                  <p className="text-sm text-slate-300 leading-relaxed italic">"{evaluation.alasan}"</p>
+                  <p className="text-sm text-slate-300 leading-relaxed italic">&quot;{evaluation.alasan}&quot;</p>
                 </div>
               </div>
 

@@ -1,0 +1,203 @@
+{
+  "summary": {
+    "model_llm": "llama-3.3-70b-versatile (via Groq)",
+    "model_embedding": "paraphrase-multilingual-MiniLM-L12-v2",
+    "n_cases": 11,
+    "passed": 11,
+    "accuracy": 1.0,
+    "avg_skor_llm": 6.45,
+    "avg_latency_s": 4.28,
+    "per_kategori": {
+      "jawaban_benar_persis": {
+        "pass": 1,
+        "total": 1
+      },
+      "beda_redaksi_singkatan": {
+        "pass": 1,
+        "total": 1
+      },
+      "jawaban_salah_total": {
+        "pass": 1,
+        "total": 1
+      },
+      "beda_redaksi_parafrase": {
+        "pass": 1,
+        "total": 1
+      },
+      "jawaban_tidak_lengkap": {
+        "pass": 1,
+        "total": 1
+      },
+      "jawaban_benar_konteks_lain": {
+        "pass": 1,
+        "total": 1
+      },
+      "jawaban_kosong": {
+        "pass": 1,
+        "total": 1
+      },
+      "jawaban_benar_dengan_pasal": {
+        "pass": 1,
+        "total": 1
+      },
+      "jawaban_ambigu": {
+        "pass": 1,
+        "total": 1
+      },
+      "toleransi_typo": {
+        "pass": 1,
+        "total": 1
+      },
+      "retrieval_failure_case": {
+        "pass": 1,
+        "total": 1
+      }
+    },
+    "verdict": "BAIK - LLM menilai jawaban secara konsisten dan adil"
+  },
+  "per_case": [
+    {
+      "id": 1,
+      "kategori": "jawaban_benar_persis",
+      "pertanyaan": "Siapakah yang berwenang mengubah dan menetapkan Undang-Undang Dasar?",
+      "jawaban_kontestan": "Majelis Permusyawaratan Rakyat berwenang mengubah dan menetapkan Undang-Undang Dasar.",
+      "kunci_jawaban_llm": "Majelis Permusyawaratan Rakyat berwenang mengubah dan menetapkan Undang-Undang Dasar",
+      "sumber_dokumen": "UUD NRI 1945.pdf hal. 84, pasal 3",
+      "skor_llm": 10,
+      "skor_expected": ">= 8",
+      "alasan": "Jawaban Tim A sama dengan kunci jawaban yang terdapat dalam dokumen referensi, yaitu UUD NRI 1945 pasal 3, sehingga skor yang diberikan adalah maksimal.",
+      "latency_s": 7.658,
+      "status": "PASS"
+    },
+    {
+      "id": 2,
+      "kategori": "beda_redaksi_singkatan",
+      "pertanyaan": "Siapakah yang berwenang mengubah dan menetapkan Undang-Undang Dasar?",
+      "jawaban_kontestan": "MPR",
+      "kunci_jawaban_llm": "Majelis Permusyawaratan Rakyat (MPR)",
+      "sumber_dokumen": "UUD NRI 1945.pdf hal. 84, pasal 3",
+      "skor_llm": 10,
+      "skor_expected": ">= 8",
+      "alasan": "Jawaban Tim B 'MPR' memiliki makna yang sama dengan kunci jawaban resmi 'Majelis Permusyawaratan Rakyat (MPR)' yang tercantum dalam dokumen referensi UUD NRI 1945.pdf hal. 84, pasal 3, sehingga diberikan skor maksimal 10.",
+      "latency_s": 3.78,
+      "status": "PASS"
+    },
+    {
+      "id": 3,
+      "kategori": "jawaban_salah_total",
+      "pertanyaan": "Siapakah yang berwenang mengubah dan menetapkan Undang-Undang Dasar?",
+      "jawaban_kontestan": "Presiden Republik Indonesia",
+      "kunci_jawaban_llm": "Majelis Permusyawaratan Rakyat",
+      "sumber_dokumen": "UUD NRI 1945.pdf hal. 84, pasal 3",
+      "skor_llm": 0,
+      "skor_expected": "<= 3",
+      "alasan": "Jawaban Tim C menyebutkan Presiden Republik Indonesia, namun dokumen referensi menyatakan bahwa Majelis Permusyawaratan Rakyat (MPR) berwenang mengubah dan menetapkan Undang-Undang Dasar, sehingga jawaban Tim C salah total.",
+      "latency_s": 3.694,
+      "status": "PASS"
+    },
+    {
+      "id": 4,
+      "kategori": "beda_redaksi_parafrase",
+      "pertanyaan": "Apa isi Pasal 34 UUD 1945 tentang fakir miskin?",
+      "jawaban_kontestan": "Negara wajib memelihara dan menjamin kehidupan warga yang miskin dan anak yang tidak memiliki orang tua.",
+      "kunci_jawaban_llm": "Negara mengembangkan sistem jaminan sosial sebagai perwujudan kemanusiaan dan keadilan sosial bagi seluruh rakyat, terutama bagi fakir miskin dan anak terlantar",
+      "sumber_dokumen": "UUD NRI 1945.pdf hal. 99, Pasal 34",
+      "skor_llm": 8,
+      "skor_expected": ">= 7",
+      "alasan": "Jawaban Tim A memiliki makna yang mirip dengan kunci jawaban, namun redaksi kata dan kalimatnya berbeda. Jawaban Tim A menyebutkan 'warga yang miskin dan anak yang tidak memiliki orang tua', sedangkan kunci jawaban menyebutkan 'fakir miskin dan anak terlantar'. Meskipun demikian, makna dasarnya sama, yaitu tentang tanggung jawab negara terhadap warga yang membutuhkan.",
+      "latency_s": 4.314,
+      "status": "PASS"
+    },
+    {
+      "id": 5,
+      "kategori": "jawaban_tidak_lengkap",
+      "pertanyaan": "Sebutkan tiga sila terakhir Pancasila!",
+      "jawaban_kontestan": "Persatuan Indonesia",
+      "kunci_jawaban_llm": "Kemanusiaan Yang Adil dan Beradab, Persatuan Indonesia, Kerakyatan Yang Dipimpin oleh Hikmat Kebijaksanaan, dalam Permusyawaratan/Perwakilan, Keadilan Sosial bagi seluruh Rakyat Indonesia",
+      "sumber_dokumen": "Ringkasan_Empat_Pilar_MPR_RI.pdf hal. 3",
+      "skor_llm": 2,
+      "skor_expected": "<= 6",
+      "alasan": "Jawaban Tim B hanya menyebutkan satu sila, yaitu Persatuan Indonesia, yang merupakan sila ketiga dari Pancasila. Jawaban tersebut tidak lengkap dan tidak mencakup tiga sila terakhir Pancasila.",
+      "latency_s": 4.007,
+      "status": "PASS"
+    },
+    {
+      "id": 6,
+      "kategori": "jawaban_benar_konteks_lain",
+      "pertanyaan": "Apa makna Bhinneka Tunggal Ika?",
+      "jawaban_kontestan": "Walaupun berbeda-beda suku, agama, dan budaya, bangsa Indonesia tetap satu kesatuan.",
+      "kunci_jawaban_llm": "Walaupun di Indonesia terdapat banyak suku, agama, ras, budaya, adat, bahasa, dan lain sebagainya, namun tetap satu kesatuan sebangsa dan setanah air",
+      "sumber_dokumen": "Ringkasan_Empat_Pilar_MPR_RI.pdf hal. 13",
+      "skor_llm": 9,
+      "skor_expected": ">= 8",
+      "alasan": "Jawaban Tim C memiliki makna yang mirip dengan kunci jawaban, namun tidak sepenuhnya sama karena tidak menyebutkan 'sebangsa dan setanah air' secara eksplisit.",
+      "latency_s": 3.937,
+      "status": "PASS"
+    },
+    {
+      "id": 7,
+      "kategori": "jawaban_kosong",
+      "pertanyaan": "Apa yang dimaksud dengan kedaulatan rakyat?",
+      "jawaban_kontestan": "Tidak tahu",
+      "kunci_jawaban_llm": "Kedaulatan adalah di tangan rakyat, dan dilakukan sepenuhnya oleh majelis permusyawaratan rakyat",
+      "sumber_dokumen": "UUD NRI 1945.pdf hal. 9, Pasal 1 ayat (2)",
+      "skor_llm": 0,
+      "skor_expected": "<= 2",
+      "alasan": "Jawaban Tim A 'Tidak tahu' tidak memiliki kemiripan makna dengan kunci jawaban yang benar, sehingga skor yang diberikan adalah 0",
+      "latency_s": 3.59,
+      "status": "PASS"
+    },
+    {
+      "id": 8,
+      "kategori": "jawaban_benar_dengan_pasal",
+      "pertanyaan": "Negara Indonesia adalah negara kesatuan yang berbentuk apa?",
+      "jawaban_kontestan": "Republik",
+      "kunci_jawaban_llm": "Republik",
+      "sumber_dokumen": "UUD NRI 1945.pdf hal. 120, Kumpulan-Soal-Lomba-Cerdas-Cermat-LCC-4-Pilar-MPR-RI.pdf hal. 34",
+      "skor_llm": 10,
+      "skor_expected": ">= 8",
+      "alasan": "Jawaban Tim B sesuai dengan dokumen referensi yang menyatakan bahwa Negara Indonesia adalah negara kesatuan yang berbentuk republik, seperti yang tercantum dalam UUD NRI 1945 pasal 1 ayat (1) dan Kumpulan Soal Lomba Cerdas Cermat LCC 4 Pilar MPR RI hal. 34.",
+      "latency_s": 4.334,
+      "status": "PASS"
+    },
+    {
+      "id": 9,
+      "kategori": "jawaban_ambigu",
+      "pertanyaan": "Berapa kali UUD 1945 telah diamandemen?",
+      "jawaban_kontestan": "Sudah beberapa kali dilakukan perubahan oleh MPR.",
+      "kunci_jawaban_llm": "Empat kali",
+      "sumber_dokumen": "Panduan Permasyarakatan.pdf hal. 68",
+      "skor_llm": 2,
+      "skor_expected": "<= 6",
+      "alasan": "Jawaban Tim C tidak secara eksplisit menyebutkan jumlah perubahan UUD 1945, sehingga tidak sama dengan kunci jawaban yang benar.",
+      "latency_s": 3.735,
+      "status": "PASS"
+    },
+    {
+      "id": 10,
+      "kategori": "toleransi_typo",
+      "pertanyaan": "Apa semboyan negara Indonesia?",
+      "jawaban_kontestan": "Bhineka Tunggal Ika",
+      "kunci_jawaban_llm": "Bhinneka Tunggal Ika",
+      "sumber_dokumen": "Panduan Permasyarakatan.pdf hal. 214, Ringkasan_Empat_Pilar_MPR_RI.pdf hal. 10",
+      "skor_llm": 10,
+      "skor_expected": ">= 8",
+      "alasan": "Jawaban Tim A sama dengan kunci jawaban yang terdapat dalam dokumen referensi, yaitu 'Bhinneka Tunggal Ika' sebagai semboyan negara Indonesia.",
+      "latency_s": 3.733,
+      "status": "PASS"
+    },
+    {
+      "id": 11,
+      "kategori": "retrieval_failure_case",
+      "pertanyaan": "Bagaimana bunyi Pasal 18A UUD 1945?",
+      "jawaban_kontestan": "Hubungan wewenang antara pemerintah pusat dan pemerintahan daerah diatur dengan undang-undang.",
+      "kunci_jawaban_llm": "Negara Kesatuan Republik Indonesia dibagi atas daerah-daerah provinsi dan daerah provinsi itu dibagi atas kabupaten dan kota, yang tiap-tiap provinsi, kabupaten, dan kota itu mempunyai pemerintahan daerah, yang diatur dengan undang-undang",
+      "sumber_dokumen": "UUD NRI 1945.pdf hal. 175",
+      "skor_llm": 10,
+      "skor_expected": ">= 8",
+      "alasan": "Jawaban Tim A memiliki makna yang sama dengan kunci jawaban, yaitu mengatur hubungan wewenang antara pemerintah pusat dan pemerintahan daerah dengan undang-undang, meskipun redaksi kata berbeda.",
+      "latency_s": 4.293,
+      "status": "PASS"
+    }
+  ]
+}
