@@ -9,7 +9,8 @@ os.environ["ANONYMIZED_TELEMETRY"] = "False"
 
 import chromadb
 
-VECTOR_DB_DIR = Path("vectordb")
+ROOT_DIR = Path(__file__).resolve().parent.parent
+VECTOR_DB_DIR = ROOT_DIR / "vectordb"
 COLLECTION_NAME = "dokumen_kewarganegaraan"
 LEGACY_COLLECTION_NAME = "langchain"
 

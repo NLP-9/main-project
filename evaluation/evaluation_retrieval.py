@@ -4,6 +4,12 @@ import time
 from pathlib import Path
 import argparse
 
+import sys
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+sys.path.append(str(ROOT_DIR))
+
 os.environ["ANONYMIZED_TELEMETRY"] = "False"
 
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -31,7 +37,7 @@ from evaluator_utils import (
 # CONFIG
 # =========================================================
 
-VECTOR_DB_DIR = Path("vectordb")
+VECTOR_DB_DIR = ROOT_DIR / "vectordb"
 
 COLLECTION_NAME = "dokumen_kewarganegaraan"
 
@@ -68,7 +74,7 @@ else:
     TEST_SET = load_questions()
 
 # =========================================================
-# CONFIG
+# OUTPUT
 # =========================================================
 
 OUTPUT_DIR = Path("evaluation_results")
@@ -112,6 +118,12 @@ for item in TEST_SET:
 
     query = item["question"]
 
+    expected_answer = (
+        item["answer"]
+        if "answer" in item
+        else item["reference_answer"]
+    )
+
     print("\n" + "=" * 60)
     print(query)
 
@@ -128,23 +140,113 @@ for item in TEST_SET:
 
     latency = time.time() - start
 
-    hr1 = hit_rate(results, item["doc_type"], 1)
+    # hr1 = hit_rate(results, item["doc_type"], 1)
 
-    mrr = reciprocal_rank(results, item["doc_type"])
+    # mrr = reciprocal_rank(results, item["doc_type"])
 
-    ndcg5 = ndcg(results, item["doc_type"], 5)
+    # ndcg5 = ndcg(results, item["doc_type"], 5)
 
-    precision5 = precision_at_k(results, item["doc_type"], 5)
+    # precision5 = precision_at_k(results, item["doc_type"], 5)
 
-    recall5 = recall_at_k(results, item["doc_type"], 5)
+    # recall5 = recall_at_k(results, item["doc_type"], 5)
+
+    # top_doc = results[0][0].page_content if results else ""
+
+    # sim = semantic_similarity(
+    #     embedding_model,
+    #     item["answer"] if "answer" in item else item["reference_answer"],
+    #     top_doc
+    # )
+
+    print("\nTOP RESULTS:")
+
+    for i, (doc, score) in enumerate(results):
+
+        print(f"\nRank {i+1}")
+        print("Score:", score)
+
+        print("Metadata:", doc.metadata)
+
+        print("Content:", doc.page_content[:300])
 
     top_doc = results[0][0].page_content if results else ""
 
     sim = semantic_similarity(
         embedding_model,
-        item["answer"] if "answer" in item else item["reference_answer"],
+        item["answer"],
         top_doc
     )
+
+    SIM_THRESHOLD = 0.5
+
+    # =====================================================
+    # HIT@1
+    # =====================================================
+
+    hr1 = 1 if sim >= SIM_THRESHOLD else 0
+
+    # =====================================================
+    # MRR
+    # =====================================================
+
+    mrr = 0
+
+    for rank, (doc, score) in enumerate(results, start=1):
+
+        candidate_sim = semantic_similarity(
+            embedding_model,
+            expected_answer,
+            doc.page_content
+        )
+
+        if candidate_sim >= SIM_THRESHOLD:
+
+            mrr = 1 / rank
+            break
+
+    # =====================================================
+    # PRECISION@K
+    # =====================================================
+
+    relevant_count = 0
+
+    for doc, score in results:
+
+        candidate_sim = semantic_similarity(
+            embedding_model,
+            expected_answer,
+            doc.page_content
+        )
+
+        if candidate_sim >= SIM_THRESHOLD:
+
+            relevant_count += 1
+
+    precision5 = relevant_count / TOP_K
+
+    # =====================================================
+    # RECALL@K
+    # =====================================================
+
+    recall5 = 1 if relevant_count > 0 else 0
+
+    # =====================================================
+    # NDCG@5
+    # =====================================================
+
+    ndcg5 = 0
+
+    for rank, (doc, score) in enumerate(results, start=1):
+
+        candidate_sim = semantic_similarity(
+            embedding_model,
+            expected_answer,
+            doc.page_content
+        )
+
+        relevance = candidate_sim
+
+        ndcg5 += relevance / (rank + 1)
 
     hr1_all.append(hr1)
     mrr_all.append(mrr)

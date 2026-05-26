@@ -1,0 +1,50 @@
+{
+  "summary": {
+    "mode": "manual",
+    "accuracy": 1.0,
+    "passed": 5,
+    "total": 5
+  },
+  "details": [
+    {
+      "question": "Apa isi Pasal 1 ayat 1 UUD 1945?",
+      "score": 10,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 62.664,
+      "reason": "Jawaban peserta sama dengan isi Pasal 1 ayat 1 UUD 1945, meskipun redaksi kata sedikit berbeda, namun maknanya sama"
+    },
+    {
+      "question": "Apa makna Bhinneka Tunggal Ika?",
+      "score": 9,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 3.618,
+      "reason": "Jawaban peserta memiliki makna yang sama dengan kunci jawaban, namun redaksi katanya sedikit berbeda."
+    },
+    {
+      "question": "Siapa yang berwenang mengubah UUD?",
+      "score": 10,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 3.766,
+      "reason": "Jawaban peserta 'MPR' sesuai dengan dokumen referensi yang menyatakan 'Majelis Permusyawaratan Rakyat berwenang mengubah dan menetapkan undang-undang dasar' pada pasal 3 UUD NRI 1945.pdf hal. 84."
+    },
+    {
+      "question": "Apa fungsi Pancasila?",
+      "score": 8,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 3.684,
+      "reason": "Jawaban peserta hanya menyebutkan 'Dasar negara Indonesia' yang merupakan bagian dari fungsi Pancasila, namun tidak menyebutkan secara lengkap sebagai 'dasar dan ideologi negara' seperti yang tercantum dalam dokumen referensi."
+    },
+    {
+      "question": "Apa makna NKRI?",
+      "score": 10,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 3.687,
+      "reason": "Jawaban peserta sama dengan makna NKRI yang terdapat dalam dokumen referensi, yaitu Negara Kesatuan Republik Indonesia."
+    }
+  ]
+}

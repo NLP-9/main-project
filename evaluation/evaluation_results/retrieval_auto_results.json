@@ -1,0 +1,512 @@
+{
+  "summary": {
+    "avg_hit@1": 0.52,
+    "avg_mrr": 0.6247,
+    "avg_ndcg@5": 0.7295,
+    "avg_precision@5": 0.496,
+    "avg_recall@5": 0.8,
+    "avg_similarity": 0.5243
+  },
+  "details": [
+    {
+      "question": "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 dilakukan amandemen pada tahun 1999, 2000, 2001, dan 2002. Sebutkan pasal-pasal yang diamandemen pada tahun 2000!",
+      "hit@1": 0,
+      "mrr": 0.3333,
+      "ndcg@5": 0.7068,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.484,
+      "latency": 0.786
+    },
+    {
+      "question": "Sebutkan kebijakan-kebijakan politik yang diterapkan pada masa Demokrasi Terpimpin (1959-1965)!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.8759,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.7002,
+      "latency": 0.7
+    },
+    {
+      "question": "Timur Tengah adalah sebuah wilayah geografis yang terletak di persimpangan tiga benua utama: Asia, Eropa, dan Afrika. Sebutkan negara-negara yang terletak di Timur Tengah!",
+      "hit@1": 0,
+      "mrr": 0.5,
+      "ndcg@5": 0.7736,
+      "precision@5": 0.4,
+      "recall@5": 1,
+      "semantic_similarity": 0.4325,
+      "latency": 0.678
+    },
+    {
+      "question": "Salah satu tujuan bangsa Indonesia adalah ikut melaksanakan ketertiban dunia. Sebutkan negara-negara yang pernah menjadi tujuan misi Kontingen Garuda!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.7521,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.8231,
+      "latency": 0.727
+    },
+    {
+      "question": "Indonesia dibagi kedalam tiga zona waktu: WIB, WITA, dan WIT. Sebutkan nama- nama ibu kota provinsi yang terletak di zona Waktu Indonesia Barat (WIB)!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.8719,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.6743,
+      "latency": 0.949
+    },
+    {
+      "question": "Hukum adalah perangkat kaidah dalam bentuk peraturan baik itu tertulis maupun tidak tertulis yang mengatur tingkah laku manusia dalam masyarakat, berbangsa, dan bernegara. Sebutkan jenis-jenis hukum di Indonesia!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.8567,
+      "precision@5": 0.6,
+      "recall@5": 1,
+      "semantic_similarity": 0.592,
+      "latency": 0.802
+    },
+    {
+      "question": "Indonesia berpijak pada 10 pilar demokrasi konstitusional yang berlandaskan pada Undang-Undang Dasar Negara Republik Indonesia tahun 1945 dan Pancasila. Sebutkan 10 pilar demokrasi konstitusional Indonesia!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.4681,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.3729,
+      "latency": 0.239
+    },
+    {
+      "question": "Asia-Pacific Economic Cooperation (APEC) adalah forum kerja sama antar 21 Ekonomi di lingkar Samudera Pasifik yang",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.8926,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.5944,
+      "latency": 0.736
+    },
+    {
+      "question": "Di antara berbagai sumber sejarah kuno Indonesia, naskah dan berita asing dianggap sumber terpenting. Sebutkan prasasti-prasasti yang ditemukan di Jawa Barat!",
+      "hit@1": 0,
+      "mrr": 0.5,
+      "ndcg@5": 0.5904,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.3483,
+      "latency": 0.72
+    },
+    {
+      "question": "Sebelum Eropa atau bangsa barat dianggap menjadi pusat peradaban, Islam telah lama mengalami kejayaan. Sebutkan ilmuwan Islam yang berhasil mempengaruhi dunia!",
+      "hit@1": 0,
+      "mrr": 0.5,
+      "ndcg@5": 0.7696,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.3433,
+      "latency": 0.737
+    },
+    {
+      "question": "Hak asasi manusia diatur dalam pasal 28A sampai 28J UUD NRI 1945. Sebutkan hak asasi manusia yang diatur dalam pasal- pasal tersebut!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.998,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.7106,
+      "latency": 0.245
+    },
+    {
+      "question": "Sebutkan pahlawan nasional yang ada di uang kertas rupiah keluaran tahun 2000 sampai 2022!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.5604,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.4248,
+      "latency": 0.709
+    },
+    {
+      "question": "Kesultanan Banjar berdiri pada tahun 1520. Sebutkan sistem pemerintahan yang berlaku pada Kesultanan Banjar saat itu!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.7811,
+      "precision@5": 0.4,
+      "recall@5": 1,
+      "semantic_similarity": 0.6234,
+      "latency": 0.745
+    },
+    {
+      "question": "Sebutkan nomor dan tahun TAP MPRS/TAP MPR yang dikategorikan dalam pasal 4 Ketetapan MPR Nomor I/MPR/2003 yang dinyatakan tetap berlaku sampai dengan terbentuknya undang-undang!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.916,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.6676,
+      "latency": 0.317
+    },
+    {
+      "question": "Berdasarkan Pasal 18 ayat (4) UUD NRI 1945, Gubernur, Bupati, dan Walikota dipilih secara demokratis. Sebutkan daftar Walikota dan PJ Walikota yang telah menjabat maupun sedang menjabat saat ini di Kota Banjarmasin!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.2336,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.1164,
+      "latency": 0.296
+    },
+    {
+      "question": "Secara geografis, batas wilayah negara Indonesia dapat dibagi menjadi empat bagian. Sebutkan batas-batas wilayah Negara Republik Indonesia!",
+      "hit@1": 0,
+      "mrr": 0.3333,
+      "ndcg@5": 0.7285,
+      "precision@5": 0.4,
+      "recall@5": 1,
+      "semantic_similarity": 0.4908,
+      "latency": 0.722
+    },
+    {
+      "question": "Sebutkan daftar daerah-daerah provinsi penghasil minyak bumi di Indonesia!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.8702,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.6489,
+      "latency": 0.7
+    },
+    {
+      "question": "Sumpah Pemuda diucapkan pada 28 Oktober 1928. Sebutkan tokoh inisiator Sumpah Pemuda!",
+      "hit@1": 0,
+      "mrr": 0.3333,
+      "ndcg@5": 0.55,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.2852,
+      "latency": 0.804
+    },
+    {
+      "question": "Sebutkan tokoh-tokoh yang melakukan penjelajahan samudra!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.8467,
+      "precision@5": 0.4,
+      "recall@5": 1,
+      "semantic_similarity": 0.7679,
+      "latency": 1.04
+    },
+    {
+      "question": "UUD NRI 1945 telah dilakukan amandemen dari tahun 1999-2001. Sebutkan Pasal-Pasal yang tidak dilakukan amandemen tersebut!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.7789,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.5664,
+      "latency": 0.287
+    },
+    {
+      "question": "Setiap warga negara berhak mendapat pendidikan (Pasal 31 ayat 1 UUD NRI 1945). Sebutkan kelompok mata pelajaran SMA/MA/sederajat jurusan IPS kelas XI dan XII pada Kurikulum K13!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.5531,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.466,
+      "latency": 0.267
+    },
+    {
+      "question": "Sebutkan tari tradisional Kalimantan Selatan yang berasal dari huruf B!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.8087,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.6058,
+      "latency": 0.69
+    },
+    {
+      "question": "Sebutkan tokoh-tokoh geografi klasik yang berjasa dalam perkembangan ilmu geografi!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.7649,
+      "precision@5": 0.4,
+      "recall@5": 1,
+      "semantic_similarity": 0.7285,
+      "latency": 0.672
+    },
+    {
+      "question": "Dalam situasi perang atau bencana alam, ada beberapa profesi tertentu yang diperlukan untuk menghadapi situasi tersebut. Apa saja profesi yang dimaksud?",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.529,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.5631,
+      "latency": 0.735
+    },
+    {
+      "question": "Provinsi Daerah Istimewa Yogyakarta sering kali menjadi destinasi wisata bagi para wisatawan lokal maupun mancanegara. Apa saja destinasi wisata populer yang ada di Provinsi Daerah Istimewa Yogyakarta?",
+      "hit@1": 0,
+      "mrr": 0.5,
+      "ndcg@5": 0.8411,
+      "precision@5": 0.6,
+      "recall@5": 1,
+      "semantic_similarity": 0.4839,
+      "latency": 0.78
+    },
+    {
+      "question": "Sebutkan daftar negara yang termasuk dalam Perserikatan Bangsa-Bangsa atau PBB yang berawalan dari huruf A!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.106,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.7945,
+      "latency": 0.729
+    },
+    {
+      "question": "Berdasarkan UUD NRI 1945 Pasal 32 ayat (1) negara memajukan kebudayaan nasional Indonesia di tengah peradaban dunia. Sebutkan lagu daerah yang berasal dari Jawa Tengah!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.4213,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.3111,
+      "latency": 0.217
+    },
+    {
+      "question": "Sebutkan nama-nama gubernur Provinsi Jawa Tengah dari tahun 1945 sampai tahun 2024!",
+      "hit@1": 0,
+      "mrr": 0.2,
+      "ndcg@5": 0.6384,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.3597,
+      "latency": 0.672
+    },
+    {
+      "question": "Sebutkan organisasi masyarakat kebangsaan yang berperan mendorong kemerdekaan Indonesia!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.0033,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.8605,
+      "latency": 0.683
+    },
+    {
+      "question": "Sebutkan contoh kata dari serapan bahasa Sanskerta menjadi bahasa Indonesia yang berawalan dari huruf vokal!",
+      "hit@1": 0,
+      "mrr": 0.25,
+      "ndcg@5": 0.6228,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.4603,
+      "latency": 0.711
+    },
+    {
+      "question": "Sebutkan nama-nama Wakil Presiden Republik Indonesia dari tahun 1945 sampai tahun 2024!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.3667,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.2771,
+      "latency": 0.196
+    },
+    {
+      "question": "Perhimpunan Bangsa-Bangsa Asia Tenggara (ASEAN) didirikan pada tahun 1967. Sebutkan anggota ASEAN saat ini!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.9381,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.5552,
+      "latency": 0.703
+    },
+    {
+      "question": "Sebutkan negara-negara peserta Konferensi Asia Afrika yang diselenggarakan di Bandung pada tahun 1955!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.1521,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.8234,
+      "latency": 0.786
+    },
+    {
+      "question": "MPR merupakan lembaga negara yang dikonseptualisasikan sebagai penjelmaan dari rakyat. Sebutkan nama-nama ketua MPRS/MPR RI!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.3222,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.2113,
+      "latency": 0.823
+    },
+    {
+      "question": "Ketetapan MPRS Nomor XXV/MPRS/1966 mengatur tentang Pembubaran Partai Komunis Indonesia. Sebutkan nama-nama pahlawan yang gugur dalam Peristiwa G30S!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.3911,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.2716,
+      "latency": 0.322
+    },
+    {
+      "question": "Sebutkan provinsi yang termasuk dalam Waktu Indonesia bagian Tengah (WITA)!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.993,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.7811,
+      "latency": 0.678
+    },
+    {
+      "question": "Berdasarkan UU Nomor 12 Tahun 2023, sebutkan kabupaten yang berada di Provinsi Jawa Timur!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.7495,
+      "precision@5": 0.6,
+      "recall@5": 1,
+      "semantic_similarity": 0.6227,
+      "latency": 0.704
+    },
+    {
+      "question": "Sebutkan alat-alat musik tradisional yang berasal dari Jawa Timur!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.9036,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.5698,
+      "latency": 0.72
+    },
+    {
+      "question": "Bab II Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 mengatur tentang Majelis Permusyawaratan Rakyat. Sebutkan nama-nama ketua MPR RI dari masa ke masa!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.3186,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.2446,
+      "latency": 0.202
+    },
+    {
+      "question": "Sebutkan nama-nama selat yang ada di Indonesia!",
+      "hit@1": 0,
+      "mrr": 0.25,
+      "ndcg@5": 0.6425,
+      "precision@5": 0.4,
+      "recall@5": 1,
+      "semantic_similarity": 0.3552,
+      "latency": 0.675
+    },
+    {
+      "question": "Provinsi Sumatera Utara memiliki 25 kabupaten. Sebutkan nama-nama kabupaten yang ada di Provinsi Sumatera Utara!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.0117,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.7653,
+      "latency": 0.686
+    },
+    {
+      "question": "Sebutkan nama-nama gunung yang berada di Sumatera Utara!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.9242,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.8106,
+      "latency": 0.666
+    },
+    {
+      "question": "Sebutkan kode plat nomor kendaraan di Pulau Sumatera!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.9369,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.6704,
+      "latency": 0.692
+    },
+    {
+      "question": "Berdasarkan UUD NRI 1945 Pasal 18 ayat 4, Gubernur, Bupati, dan Walikota dipilih secara demokratis. Sebutkan nama-nama gubernur Provinsi Sumatera Utara!",
+      "hit@1": 0,
+      "mrr": 0,
+      "ndcg@5": 0.268,
+      "precision@5": 0.0,
+      "recall@5": 0,
+      "semantic_similarity": 0.123,
+      "latency": 0.225
+    },
+    {
+      "question": "Sebutkan jenis-jenis tanaman asli di Indonesia!",
+      "hit@1": 0,
+      "mrr": 0.2,
+      "ndcg@5": 0.2898,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.1283,
+      "latency": 0.705
+    },
+    {
+      "question": "Sebutkan fraksi dan kelompok yang ada di MPR periode 2019 hingga 2024!",
+      "hit@1": 0,
+      "mrr": 0.3333,
+      "ndcg@5": 0.7069,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.4658,
+      "latency": 1.132
+    },
+    {
+      "question": "Sebutkan provinsi yang termasuk dalam Waktu Indonesia bagian Barat (WIB)!",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.0243,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.7687,
+      "latency": 0.901
+    },
+    {
+      "question": "Berdasarkan Peraturan Daerah Provinsi Bali Nomor 4 Tahun 2019 tentang Desa Adat di Bali pada Pasal 2, pengaturan Desa Adat berdasarkan apa saja?",
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 0.7039,
+      "precision@5": 0.2,
+      "recall@5": 1,
+      "semantic_similarity": 0.5631,
+      "latency": 0.742
+    },
+    {
+      "question": "Beberapa negara dan Uni Eropa menjalin hubungan multilateral lewat sebuah forum bernama Group of Twenty (G20). Sebutkan negara-negara yang tergabung dalam G20!",
+      "hit@1": 0,
+      "mrr": 0.5,
+      "ndcg@5": 0.9184,
+      "precision@5": 0.8,
+      "recall@5": 1,
+      "semantic_similarity": 0.4652,
+      "latency": 0.777
+    },
+    {
+      "question": "Sebutkan nama-nama gubernur atau penjabat Provinsi Bali dari tahun 1950 sampai tahun 2024!",
+      "hit@1": 0,
+      "mrr": 0.5,
+      "ndcg@5": 0.8033,
+      "precision@5": 0.6,
+      "recall@5": 1,
+      "semantic_similarity": 0.4441,
+      "latency": 0.732
+    }
+  ]
+}
