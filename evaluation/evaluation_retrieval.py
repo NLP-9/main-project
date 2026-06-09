@@ -22,7 +22,7 @@ from retrieval_core import (
     detect_document_filter,
 )
 
-from evaluator_utils import (
+from evaluation.evaluator_utils import (
     hit_rate,
     reciprocal_rank,
     ndcg,

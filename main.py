@@ -6,15 +6,17 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_groq import ChatGroq
 import os
+import json 
 from dotenv import load_dotenv
 
 from retrieval_core import EMBEDDING_MODEL, build_embedding_kwargs, hybrid_search
 
 load_dotenv()
 
+os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY", "")
+
 app = FastAPI(title="SmartJuri-AI API Engine")
 
-# CORS Middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], 
@@ -35,7 +37,8 @@ db = Chroma(
 
 llm = ChatGroq(
     model="llama-3.3-70b-versatile", 
-    temperature=0.1
+    temperature=0.1,
+    model_kwargs={"response_format": {"type": "json_object"}}
 )
 
 class EvaluationRequest(BaseModel):
@@ -49,14 +52,12 @@ async def evaluate_answer(req: EvaluationRequest):
         raise HTTPException(status_code=400, detail="Pertanyaan dan jawaban wajib diisi")
     
     try:
-        # 1. RAG Retrieval hybrid agar istilah hukum persis dan makna semantik sama-sama terambil
         docs = [doc for doc, _ in hybrid_search(db, req.pertanyaan, k=4)]
         context_text = "\n\n".join([
             f"[Sumber: {doc.metadata['source_file']} hal. {doc.metadata['page_number']}]\n{doc.page_content}" 
             for doc in docs
         ])
         
-        # 2. Prompt Engineering
         system_prompt = f"""
         Kamu adalah Dewan Juri Cerdas Cermat Empat Pilar MPR RI yang objektif dan adil.
         Tugasmu adalah menilai jawaban dari SATU kontestan bernama {req.nama_kontestan} berdasarkan dokumen referensi.
@@ -77,7 +78,7 @@ async def evaluate_answer(req: EvaluationRequest):
         4. Jika jawaban salah total atau tidak nyambung, beri skor 0.
         5. Berikan penjelasan alasan penilaian yang singkat dan transparan.
 
-        FORMAT OUTPUT (Wajib kembalikan dalam struktur JSON mentah seperti ini tanpa ada teks tambahan lain):
+        WAKIB KEMBALIKAN OUTPUT DALAM FORMAT JSON BERIKUT:
         {{
             "kunci_jawaban": "isi kunci jawaban resmi",
             "sumber_dokumen": "nama file dan halaman",
@@ -88,19 +89,13 @@ async def evaluate_answer(req: EvaluationRequest):
         
         response = llm.invoke(system_prompt)
         
-        # Output cleaning untuk parsing ke JSON
-        import json
-        clean_content = response.content.strip()
-        if clean_content.startswith("```json"):
-            clean_content = clean_content.split("```json")[1].split("```")[0].strip()
-        elif clean_content.startswith("```"):
-            clean_content = clean_content.split("```")[1].split("```")[0].strip()
-            
-        result_json = json.loads(clean_content)
+        result_json = json.loads(response.content.strip())
         result_json["raw_context"] = context_text
         
         return result_json
         
+    except json.JSONDecodeError as json_err:
+        raise HTTPException(status_code=500, detail=f"Gagal memparsing format output AI: {str(json_err)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
