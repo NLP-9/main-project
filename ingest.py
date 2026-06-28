@@ -1,7 +1,7 @@
+import os
 import re
 from pathlib import Path
 
-import os
 os.environ["ANONYMIZED_TELEMETRY"] = "False"
 
 import chromadb
@@ -10,14 +10,18 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
-from retrieval_core import EMBEDDING_MODEL, build_embedding_kwargs
+from retrieval_core import (
+    EMBEDDING_MODEL,
+    build_embedding_kwargs,
+    format_document_for_embedding,
+)
 
 # ==================================================
 # KONFIGURASI PROJECT
 # ==================================================
 
-# Folder PDF
 DATA_FOLDER = Path("Data")
+
 DATA_SUBFOLDERS = [
     "Contoh Soal",
     "Empat Pilar MPR RI",
@@ -25,40 +29,45 @@ DATA_SUBFOLDERS = [
     "UUD",
 ]
 
-# Folder penyimpanan ChromaDB
 VECTOR_DB_DIR = Path("vectordb")
 
-# Nama collection agar konsisten saat ingest dan retrieval
 COLLECTION_NAME = "dokumen_kewarganegaraan"
 
-# Chunking untuk dokumen hukum
-# Chunk terlalu kecil sering kehilangan konteks pasal/istilah hukum.
-CHUNK_SIZE = 700
-CHUNK_OVERLAP = 140
+# Untuk dokumen hukum/kewarganegaraan, chunk jangan terlalu kecil
+CHUNK_SIZE = 900
+CHUNK_OVERLAP = 180
+
+BATCH_SIZE = 2000
+
 
 # ==================================================
-# PREPROCESSING RINGAN UNTUK RAG
+# PREPROCESSING RINGAN
 # ==================================================
 
-def preprocess_text(text):
+def preprocess_text(text: str) -> str:
+    """
+    Preprocessing ringan untuk PDF.
+    Tidak dibuat terlalu agresif agar konteks pasal, kalimat,
+    dan istilah hukum tetap aman.
+    """
 
-    # lowercase
-    text = text.lower()
+    if text is None:
+        return ""
 
-    # hapus karakter rusak PDF ringan (TAPI JANGAN AGGRESSIVE)
+    # Hapus karakter rusak ringan dari PDF
     text = text.replace("�", "")
     text = text.replace("Â", "")
     text = text.replace("â", "")
     text = text.replace("™", "")
     text = text.replace("œ", "")
-    # JANGAN hapus tanda baca penting seperti titik karena mereka penting untuk semantik
 
-    # rapikan whitespace (tapi jaga sedikit formatting)
+    # Rapikan whitespace
     text = re.sub(r"\s+", " ", text)
 
     return text.strip()
 
-def get_document_type(file_name, folder_name):
+
+def get_document_type(file_name: str, folder_name: str) -> str:
     normalized_name = file_name.lower()
     normalized_folder = folder_name.lower()
 
@@ -72,6 +81,15 @@ def get_document_type(file_name, folder_name):
         return "TAP_MPR"
 
     return "EMPAT_PILAR"
+
+
+def build_context_prefix(metadata: dict) -> str:
+    return (
+        f"jenis dokumen: {metadata.get('document_type', '')}. "
+        f"sumber: {metadata.get('source_folder', '')} / {metadata.get('source_file', '')}. "
+        f"halaman: {metadata.get('page_number', '')}. "
+    )
+
 
 # ==================================================
 # LOAD DOKUMEN PDF
@@ -87,7 +105,12 @@ if not DATA_FOLDER.exists():
     raise FileNotFoundError(f"Folder data tidak ditemukan: {DATA_FOLDER}")
 
 data_folders = [DATA_FOLDER / folder_name for folder_name in DATA_SUBFOLDERS]
-missing_folders = [folder for folder in data_folders if not folder.exists()]
+
+missing_folders = [
+    folder
+    for folder in data_folders
+    if not folder.exists()
+]
 
 if missing_folders:
     missing_folder_names = ", ".join(str(folder) for folder in missing_folders)
@@ -104,56 +127,43 @@ if not pdf_files:
     raise FileNotFoundError(f"Tidak ada file PDF di folder: {folder_names}")
 
 for file_path in pdf_files:
-
     file_name = file_path.name
     source_folder = file_path.parent.name
 
     print(f"\nLoading file: {source_folder}/{file_name}")
 
     try:
-
-        # Load PDF
         loader = PyPDFLoader(str(file_path))
-
         docs = loader.load()
 
-        # preprocessing + metadata
         for doc in docs:
+            clean_text = preprocess_text(doc.page_content)
 
-            # preprocessing text
-            doc.page_content = preprocess_text(doc.page_content)
+            doc.page_content = clean_text
 
-            # metadata source file
             doc.metadata["source_file"] = file_name
-
-            # metadata folder sumber
             doc.metadata["source_folder"] = source_folder
-
-            # metadata nomor halaman
             doc.metadata["page_number"] = doc.metadata.get("page", 0) + 1
-
-            # metadata jenis dokumen
-            doc.metadata["document_type"] = get_document_type(file_name, source_folder)
-
-            context_prefix = (
-                f"jenis dokumen: {doc.metadata['document_type']}. "
-                f"sumber: {source_folder} / {file_name}. "
-                f"halaman: {doc.metadata['page_number']}. "
+            doc.metadata["document_type"] = get_document_type(
+                file_name=file_name,
+                folder_name=source_folder,
             )
-            doc.page_content = f"{context_prefix}{doc.page_content}"
 
         all_docs.extend(docs)
 
         print(f"Berhasil load {len(docs)} halaman")
 
     except Exception as e:
-
         print(f"Gagal load file: {file_name}")
         print(e)
 
 print("\n" + "=" * 60)
 print(f"TOTAL HALAMAN: {len(all_docs)}")
 print("=" * 60)
+
+if not all_docs:
+    raise ValueError("Tidak ada dokumen yang berhasil dimuat.")
+
 
 # ==================================================
 # TEXT CHUNKING
@@ -164,21 +174,31 @@ print("MELAKUKAN TEXT CHUNKING")
 print("=" * 60)
 
 text_splitter = RecursiveCharacterTextSplitter(
-    separators=["\n\n", "\n", ".", " "],
+    separators=["\n\n", "\n", ". ", ".", " "],
     chunk_size=CHUNK_SIZE,
-    chunk_overlap=CHUNK_OVERLAP
+    chunk_overlap=CHUNK_OVERLAP,
 )
 
 chunks = text_splitter.split_documents(all_docs)
 
+if not chunks:
+    raise ValueError("Tidak ada chunk yang berhasil dibuat. Cek isi file PDF.")
+
 for i, chunk in enumerate(chunks, start=1):
     chunk.metadata["chunk_id"] = i
+
+    context_prefix = build_context_prefix(chunk.metadata)
+
+    chunk_text_with_context = f"{context_prefix}{chunk.page_content}"
+
+    # Penting:
+    # Jika pakai E5, setiap chunk akan otomatis diawali 'passage:'
+    chunk.page_content = format_document_for_embedding(chunk_text_with_context)
+
     chunk.metadata["chunk_size"] = len(chunk.page_content)
 
 print(f"\nTotal chunks berhasil dibuat: {len(chunks)}")
 
-if not chunks:
-    raise ValueError("Tidak ada chunk yang berhasil dibuat. Cek isi file PDF.")
 
 # ==================================================
 # PREVIEW CHUNK
@@ -188,9 +208,8 @@ print("\n" + "=" * 60)
 print("CONTOH CHUNK PERTAMA")
 print("=" * 60)
 
-if len(chunks) > 0:
+print(chunks[0].page_content[:1200])
 
-    print(chunks[0].page_content[:1200])
 
 # ==================================================
 # LOAD EMBEDDING MODEL
@@ -204,6 +223,7 @@ embedding_model = HuggingFaceEmbeddings(**build_embedding_kwargs())
 
 print(f"\nModel digunakan: {EMBEDDING_MODEL}")
 
+
 # ==================================================
 # MEMBUAT VECTOR DATABASE
 # ==================================================
@@ -214,43 +234,51 @@ print("=" * 60)
 
 client = chromadb.PersistentClient(path=str(VECTOR_DB_DIR))
 
-existing_collections = [collection.name for collection in client.list_collections()]
+existing_collections = [
+    collection.name
+    for collection in client.list_collections()
+]
 
 if COLLECTION_NAME in existing_collections:
     print(f"\nCollection lama ditemukan: {COLLECTION_NAME}")
     print("Menghapus collection lama agar hasil ingest tidak duplikat.")
     client.delete_collection(COLLECTION_NAME)
 
-# Buat Chroma vectorstore kosong lalu tambahkan dokumen secara batch
 vectorstore = Chroma(
     persist_directory=str(VECTOR_DB_DIR),
     embedding_function=embedding_model,
     collection_name=COLLECTION_NAME,
 )
 
-# Batasi ukuran batch agar tidak melebihi batas maksimal server Chroma
-# Nilai ini lebih kecil dari error yang muncul (5461). Gunakan margin aman.
-BATCH_SIZE = 2000
 total = len(chunks)
-print(f"\nMenambahkan {total} chunk ke collection dalam batch berukuran {BATCH_SIZE}...")
+
+print(
+    f"\nMenambahkan {total} chunk ke collection "
+    f"dalam batch berukuran {BATCH_SIZE}..."
+)
 
 for start in range(0, total, BATCH_SIZE):
     end = min(start + BATCH_SIZE, total)
     batch = chunks[start:end]
-    print(f"  Menambahkan batch {start // BATCH_SIZE + 1}: indeks {start}-{end-1} (jumlah {len(batch)})")
+
+    print(
+        f"  Menambahkan batch {start // BATCH_SIZE + 1}: "
+        f"indeks {start}-{end - 1} "
+        f"(jumlah {len(batch)})"
+    )
+
     vectorstore.add_documents(batch)
 
-# Pastikan perubahan dipersist
 try:
     vectorstore.persist()
 except Exception:
-    # Be tolerant terhadap implementasi Chroma yang mungkin menyimpan otomatis
     pass
 
 print("\nVector Database berhasil dibuat!")
 
+
 # ==================================================
-# INFORMASI AKHIR
+# RINGKASAN AKHIR
 # ==================================================
 
 print("\n" + "=" * 60)
