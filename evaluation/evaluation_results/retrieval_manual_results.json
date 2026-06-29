@@ -1,62 +1,62 @@
 {
   "summary": {
-    "avg_hit@1": 0.4,
-    "avg_mrr": 0.4,
-    "avg_ndcg@5": 0.6368,
-    "avg_precision@5": 0.4,
-    "avg_recall@5": 0.4,
-    "avg_similarity": 0.4287
+    "avg_hit@1": 1.0,
+    "avg_mrr": 1.0,
+    "avg_ndcg@5": 1.1415,
+    "avg_precision@5": 1.0,
+    "avg_recall@5": 1.0,
+    "avg_similarity": 0.7911
   },
   "details": [
     {
       "question": "Apa isi Pasal 1 ayat 1 UUD 1945?",
-      "hit@1": 0,
-      "mrr": 0,
-      "ndcg@5": 0.3676,
-      "precision@5": 0.0,
-      "recall@5": 0,
-      "semantic_similarity": 0.127,
-      "latency": 1.191
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.156,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.7877,
+      "latency": 1.827
     },
     {
       "question": "Apa makna Bhinneka Tunggal Ika?",
-      "hit@1": 0,
-      "mrr": 0,
-      "ndcg@5": 0.4978,
-      "precision@5": 0.0,
-      "recall@5": 0,
-      "semantic_similarity": 0.3987,
-      "latency": 0.312
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.1209,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.776,
+      "latency": 0.662
     },
     {
       "question": "Siapa yang berwenang mengubah UUD?",
-      "hit@1": 0,
-      "mrr": 0,
-      "ndcg@5": 0.3963,
-      "precision@5": 0.0,
-      "recall@5": 0,
-      "semantic_similarity": 0.2806,
-      "latency": 0.199
+      "hit@1": 1,
+      "mrr": 1.0,
+      "ndcg@5": 1.063,
+      "precision@5": 1.0,
+      "recall@5": 1,
+      "semantic_similarity": 0.7338,
+      "latency": 0.228
     },
     {
       "question": "Apa fungsi Pancasila?",
       "hit@1": 1,
       "mrr": 1.0,
-      "ndcg@5": 0.8636,
+      "ndcg@5": 1.1896,
       "precision@5": 1.0,
       "recall@5": 1,
-      "semantic_similarity": 0.5761,
-      "latency": 0.28
+      "semantic_similarity": 0.8381,
+      "latency": 0.721
     },
     {
       "question": "Apa makna NKRI?",
       "hit@1": 1,
       "mrr": 1.0,
-      "ndcg@5": 1.0584,
+      "ndcg@5": 1.1779,
       "precision@5": 1.0,
       "recall@5": 1,
-      "semantic_similarity": 0.761,
-      "latency": 0.279
+      "semantic_similarity": 0.8197,
+      "latency": 0.765
     }
   ]
 }

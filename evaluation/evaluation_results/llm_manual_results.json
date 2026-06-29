@@ -11,40 +11,40 @@
       "score": 10,
       "expected_min_score": 8,
       "passed": true,
-      "latency": 62.664,
-      "reason": "Jawaban peserta sama dengan isi Pasal 1 ayat 1 UUD 1945, meskipun redaksi kata sedikit berbeda, namun maknanya sama"
+      "latency": 5.05,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, yaitu Pasal 1 ayat 1 UUD 1945."
     },
     {
       "question": "Apa makna Bhinneka Tunggal Ika?",
-      "score": 9,
+      "score": 10,
       "expected_min_score": 8,
       "passed": true,
-      "latency": 3.618,
-      "reason": "Jawaban peserta memiliki makna yang sama dengan kunci jawaban, namun redaksi katanya sedikit berbeda."
+      "latency": 3.098,
+      "reason": "Jawaban peserta memiliki makna yang sama dengan kunci jawaban, yaitu 'berbeda-beda tetapi satu jua', sehingga skor maksimal diberikan"
     },
     {
       "question": "Siapa yang berwenang mengubah UUD?",
       "score": 10,
       "expected_min_score": 8,
       "passed": true,
-      "latency": 3.766,
-      "reason": "Jawaban peserta 'MPR' sesuai dengan dokumen referensi yang menyatakan 'Majelis Permusyawaratan Rakyat berwenang mengubah dan menetapkan undang-undang dasar' pada pasal 3 UUD NRI 1945.pdf hal. 84."
+      "latency": 2.833,
+      "reason": "Jawaban Peserta 'MPR' sesuai dengan dokumen referensi yang menyatakan MPR berwenang mengubah dan menetapkan Undang-Undang Dasar (Pasal 3 Ayat 1)"
     },
     {
       "question": "Apa fungsi Pancasila?",
       "score": 8,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 3.684,
-      "reason": "Jawaban peserta hanya menyebutkan 'Dasar negara Indonesia' yang merupakan bagian dari fungsi Pancasila, namun tidak menyebutkan secara lengkap sebagai 'dasar dan ideologi negara' seperti yang tercantum dalam dokumen referensi."
+      "latency": 3.121,
+      "reason": "Jawaban peserta hanya menyebutkan 'Dasar negara Indonesia' yang merupakan bagian dari fungsi Pancasila, namun tidak menyebutkan secara lengkap seperti dalam dokumen referensi."
     },
     {
       "question": "Apa makna NKRI?",
-      "score": 10,
+      "score": 8,
       "expected_min_score": 8,
       "passed": true,
-      "latency": 3.687,
-      "reason": "Jawaban peserta sama dengan makna NKRI yang terdapat dalam dokumen referensi, yaitu Negara Kesatuan Republik Indonesia."
+      "latency": 3.311,
+      "reason": "Jawaban peserta benar namun tidak lengkap, hanya menyebutkan singkatan dan nama resmi NKRI tanpa penjelasan lebih lanjut tentang makna atau karakteristiknya"
     }
   ]
 }

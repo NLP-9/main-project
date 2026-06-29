@@ -1,8 +1,8 @@
 {
   "summary": {
     "mode": "auto",
-    "accuracy": 0.8,
-    "passed": 40,
+    "accuracy": 0.84,
+    "passed": 42,
     "total": 50
   },
   "details": [
@@ -11,23 +11,23 @@
       "score": 0,
       "expected_min_score": 7,
       "passed": false,
-      "latency": 4.262,
-      "reason": "Jawaban peserta tidak dapat diverifikasi karena dokumen referensi tidak menyediakan informasi spesifik tentang pasal-pasal yang diamandemen pada tahun 2000"
+      "latency": 3.194,
+      "reason": "Jawaban peserta tidak dapat diverifikasi karena dokumen referensi tidak menyebutkan pasal-pasal yang diamandemen pada tahun 2000 secara eksplisit."
     },
     {
       "question": "Sebutkan kebijakan-kebijakan politik yang diterapkan pada masa Demokrasi Terpimpin (1959-1965)!",
-      "score": 10,
+      "score": 8,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 4.003,
-      "reason": "Jawaban peserta memiliki kemiripan makna yang sangat tinggi dengan kebijakan-kebijakan politik yang diterapkan pada masa Demokrasi Terpimpin (1959-1965) yang tercantum dalam dokumen referensi, meskipun tidak secara eksplisit disebutkan dalam satu dokumen saja. Kebijakan-kebijakan tersebut seperti Pembentukan MPRS, Penerapan Konsep Nasakom, dan Konfrontasi dengan Malaysia, merupakan bagian dari kebijakan politik pada masa Demokrasi Terpimpin."
+      "latency": 4.373,
+      "reason": "Jawaban peserta menyebutkan beberapa kebijakan politik pada masa Demokrasi Terpimpin, namun tidak secara eksplisit menyebutkan Ketetapan MPRS No. VIII/MPRS/1965. Namun, beberapa kebijakan yang disebutkan seperti Konfrontasi dengan Malaysia dan Politik NEFO-OLDEFO relevan dengan masa Demokrasi Terpimpin."
     },
     {
       "question": "Timur Tengah adalah sebuah wilayah geografis yang terletak di persimpangan tiga benua utama: Asia, Eropa, dan Afrika. Sebutkan negara-negara yang terletak di Timur Tengah!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 3.787,
+      "latency": 3.983,
       "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
@@ -35,119 +35,119 @@
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 3.675,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
+      "latency": 4.102,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Indonesia dibagi kedalam tiga zona waktu: WIB, WITA, dan WIT. Sebutkan nama- nama ibu kota provinsi yang terletak di zona Waktu Indonesia Barat (WIB)!",
-      "score": 0,
+      "score": 10,
       "expected_min_score": 7,
-      "passed": false,
-      "latency": 3.991,
-      "reason": "Jawaban peserta tidak sesuai dengan kunci jawaban yang benar, karena jawaban peserta mencakup ibu kota provinsi yang terletak di zona WIB dan zona lainnya, sedangkan kunci jawaban hanya mencakup provinsi yang terletak di zona WIB."
+      "passed": true,
+      "latency": 4.189,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Hukum adalah perangkat kaidah dalam bentuk peraturan baik itu tertulis maupun tidak tertulis yang mengatur tingkah laku manusia dalam masyarakat, berbangsa, dan bernegara. Sebutkan jenis-jenis hukum di Indonesia!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 4.045,
-      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, yaitu jenis-jenis hukum di Indonesia."
+      "latency": 4.085,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Indonesia berpijak pada 10 pilar demokrasi konstitusional yang berlandaskan pada Undang-Undang Dasar Negara Republik Indonesia tahun 1945 dan Pancasila. Sebutkan 10 pilar demokrasi konstitusional Indonesia!",
-      "score": 0,
+      "score": 8,
       "expected_min_score": 7,
-      "passed": false,
-      "latency": 4.054,
-      "reason": "Jawaban peserta tidak sesuai dengan informasi yang tersedia dalam dokumen referensi, dan dokumen referensi tidak menyediakan informasi tentang 10 pilar demokrasi konstitusional"
+      "passed": true,
+      "latency": 3.388,
+      "reason": "Jawaban peserta memiliki kemiripan makna dengan kunci jawaban, namun tidak sepenuhnya sama dan beberapa poin tidak secara eksplisit disebutkan dalam dokumen referensi."
     },
     {
       "question": "Asia-Pacific Economic Cooperation (APEC) adalah forum kerja sama antar 21 Ekonomi di lingkar Samudera Pasifik yang",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 3.637,
-      "reason": "Jawaban peserta sama dengan informasi yang terdapat pada dokumen referensi, yaitu negara-negara yang terlibat dalam Asia-Pacific Economic Cooperation (APEC)."
+      "latency": 3.877,
+      "reason": "Jawaban peserta sama dengan informasi yang terdapat pada dokumen referensi, yaitu negara-negara yang terlibat dalam Asia-Pacific Economic Cooperation (APEC)"
     },
     {
       "question": "Di antara berbagai sumber sejarah kuno Indonesia, naskah dan berita asing dianggap sumber terpenting. Sebutkan prasasti-prasasti yang ditemukan di Jawa Barat!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 3.72,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
+      "latency": 4.002,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat dalam dokumen referensi, sehingga skor maksimal diberikan."
     },
     {
       "question": "Sebelum Eropa atau bangsa barat dianggap menjadi pusat peradaban, Islam telah lama mengalami kejayaan. Sebutkan ilmuwan Islam yang berhasil mempengaruhi dunia!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 3.725,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat dalam dokumen referensi, sehingga skor maksimal diberikan."
+      "latency": 3.945,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat dalam dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Hak asasi manusia diatur dalam pasal 28A sampai 28J UUD NRI 1945. Sebutkan hak asasi manusia yang diatur dalam pasal- pasal tersebut!",
       "score": 8,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 4.548,
-      "reason": "Jawaban peserta sebagian besar sesuai dengan hak asasi manusia yang diatur dalam UUD NRI 1945, namun tidak secara eksplisit menyebutkan pasal 28A sampai 28J dan beberapa hak asasi manusia lainnya yang tercantum dalam dokumen referensi."
+      "latency": 7.381,
+      "reason": "Jawaban peserta mencakup beberapa hak asasi manusia yang diatur dalam pasal 28A sampai 28J UUD NRI 1945, seperti hak untuk hidup, berkeluarga, dan memiliki keturunan. Namun, jawaban tersebut tidak secara eksplisit menyebutkan semua hak asasi manusia yang diatur dalam pasal-pasal tersebut, sehingga skor diberikan 8."
     },
     {
       "question": "Sebutkan pahlawan nasional yang ada di uang kertas rupiah keluaran tahun 2000 sampai 2022!",
-      "score": 0,
-      "expected_min_score": 7,
-      "passed": false,
-      "latency": 4.078,
-      "reason": "Jawaban peserta tidak sesuai dengan pertanyaan, karena pertanyaan meminta pahlawan nasional yang ada di uang kertas rupiah keluaran tahun 2000 sampai 2022, sedangkan jawaban peserta menyebutkan beberapa pahlawan nasional tanpa menyebutkan keterkaitannya dengan uang kertas rupiah. Sementara itu, dokumen referensi hanya menyebutkan Fatmawati sebagai pahlawan nasional yang berjasa menjahit bendera pusaka merah putih, tanpa menyebutkan keterkaitannya dengan uang kertas rupiah."
-    },
-    {
-      "question": "Kesultanan Banjar berdiri pada tahun 1520. Sebutkan sistem pemerintahan yang berlaku pada Kesultanan Banjar saat itu!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 3.785,
-      "reason": "Jawaban peserta sama dengan informasi yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
+      "latency": 11.598,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang ada di dokumen referensi, sehingga diberikan skor maksimal."
+    },
+    {
+      "question": "Kesultanan Banjar berdiri pada tahun 1520. Sebutkan sistem pemerintahan yang berlaku pada Kesultanan Banjar saat itu!",
+      "score": 0,
+      "expected_min_score": 7,
+      "passed": false,
+      "latency": 9.327,
+      "reason": "Jawaban peserta tidak sesuai dengan dokumen referensi yang disediakan, karena dokumen referensi tidak membahas tentang sistem pemerintahan Kesultanan Banjar secara spesifik."
     },
     {
       "question": "Sebutkan nomor dan tahun TAP MPRS/TAP MPR yang dikategorikan dalam pasal 4 Ketetapan MPR Nomor I/MPR/2003 yang dinyatakan tetap berlaku sampai dengan terbentuknya undang-undang!",
-      "score": 8,
+      "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 4.121,
-      "reason": "Jawaban peserta menyebutkan beberapa TAP MPR yang mungkin relevan, namun dokumen referensi tidak menyebutkan secara eksplisit nomor dan tahun TAP MPRS/TAP MPR yang dikategorikan dalam pasal 4, sehingga jawaban peserta tidak sepenuhnya akurat"
+      "latency": 8.497,
+      "reason": "Jawaban peserta sesuai dengan kategori TAP MPRS/TAP MPR yang dinyatakan tetap berlaku sampai dengan terbentuknya undang-undang, sesuai dengan pasal 4 Ketetapan MPR Nomor I/MPR/2003"
     },
     {
       "question": "Berdasarkan Pasal 18 ayat (4) UUD NRI 1945, Gubernur, Bupati, dan Walikota dipilih secara demokratis. Sebutkan daftar Walikota dan PJ Walikota yang telah menjabat maupun sedang menjabat saat ini di Kota Banjarmasin!",
-      "score": 8,
+      "score": 0,
       "expected_min_score": 7,
-      "passed": true,
-      "latency": 4.289,
-      "reason": "Jawaban peserta menyebutkan daftar Walikota dan PJ Walikota di Kota Banjarmasin, namun tidak secara eksplisit menyebutkan bahwa mereka dipilih secara demokratis sesuai dengan Pasal 18 ayat (4) UUD NRI 1945. Namun, jawaban tersebut masih relevan dengan pertanyaan dan memiliki kemiripan makna dengan kunci jawaban yang benar."
+      "passed": false,
+      "latency": 10.668,
+      "reason": "Jawaban peserta tidak sesuai dengan pertanyaan yang meminta daftar Walikota dan PJ Walikota di Kota Banjarmasin berdasarkan Pasal 18 ayat (4) UUD NRI 1945, karena dokumen referensi tidak menyediakan informasi tersebut."
     },
     {
       "question": "Secara geografis, batas wilayah negara Indonesia dapat dibagi menjadi empat bagian. Sebutkan batas-batas wilayah Negara Republik Indonesia!",
       "score": 8,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 4.102,
-      "reason": "Jawaban peserta mencantumkan beberapa negara tetangga dan perairan yang berbatasan dengan Indonesia, namun tidak secara eksplisit menyebutkan batas darat dan batas laut sebagai pembagian utama. Selain itu, jawaban peserta juga tidak menyebutkan Laut Cina Selatan sebagai salah satu batas laut Indonesia."
+      "latency": 8.442,
+      "reason": "Jawaban peserta sebagian besar tepat, namun tidak menyebutkan batas wilayah Indonesia secara lengkap dan akurat berdasarkan dokumen referensi. Beberapa negara yang disebutkan seperti Thailand dan Vietnam tidak tepat sebagai batas wilayah utara Indonesia."
     },
     {
       "question": "Sebutkan daftar daerah-daerah provinsi penghasil minyak bumi di Indonesia!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 5.674,
-      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga skor yang diberikan adalah maksimal."
+      "latency": 8.218,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Sumpah Pemuda diucapkan pada 28 Oktober 1928. Sebutkan tokoh inisiator Sumpah Pemuda!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 6.914,
+      "latency": 8.19,
       "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
@@ -155,31 +155,31 @@
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 5.73,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
+      "latency": 8.193,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga skor yang diberikan adalah maksimal."
     },
     {
       "question": "UUD NRI 1945 telah dilakukan amandemen dari tahun 1999-2001. Sebutkan Pasal-Pasal yang tidak dilakukan amandemen tersebut!",
-      "score": 0,
+      "score": 8,
       "expected_min_score": 7,
-      "passed": false,
-      "latency": 8.2,
-      "reason": "Jawaban peserta tidak sesuai dengan dokumen referensi, karena dokumen referensi hanya menyebutkan bahwa bentuk negara kesatuan republik indonesia tidak dapat diubah, bukan pasal-pasal yang disebutkan oleh peserta."
+      "passed": true,
+      "latency": 10.556,
+      "reason": "Jawaban peserta menyebutkan beberapa pasal yang tidak diubah, namun dokumen referensi hanya menyebutkan bahwa bentuk Negara Kesatuan Republik Indonesia tidak dapat diubah (ayat 5). Jawaban peserta memiliki kemiripan makna dengan kunci jawaban, namun tidak sepenuhnya akurat."
     },
     {
       "question": "Setiap warga negara berhak mendapat pendidikan (Pasal 31 ayat 1 UUD NRI 1945). Sebutkan kelompok mata pelajaran SMA/MA/sederajat jurusan IPS kelas XI dan XII pada Kurikulum K13!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 8.741,
-      "reason": "Jawaban peserta secara umum sesuai dengan struktur kurikulum yang biasa digunakan, namun tidak ada informasi spesifik dalam dokumen referensi yang disediakan untuk memastikan kebenaran jawaban tersebut. Oleh karena itu, skor diberikan berdasarkan kemiripan makna dan asumsi bahwa kurikulum tersebut mencakup mata pelajaran yang umum untuk jurusan IPS."
+      "latency": 9.719,
+      "reason": "Jawaban peserta mencakup kelompok mata pelajaran SMA/MA/sederajat jurusan IPS kelas XI dan XII pada Kurikulum K13 secara lengkap dan akurat, meskipun tidak ada informasi spesifik dalam dokumen referensi yang disediakan untuk memverifikasi jawaban tersebut."
     },
     {
       "question": "Sebutkan tari tradisional Kalimantan Selatan yang berasal dari huruf B!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 7.948,
+      "latency": 10.599,
       "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
@@ -187,79 +187,79 @@
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 7.25,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat dalam dokumen referensi, sehingga skor maksimal diberikan."
+      "latency": 9.098,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat dalam dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Dalam situasi perang atau bencana alam, ada beberapa profesi tertentu yang diperlukan untuk menghadapi situasi tersebut. Apa saja profesi yang dimaksud?",
-      "score": 10,
+      "score": 8,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 6.879,
-      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
+      "latency": 9.235,
+      "reason": "Jawaban peserta mencakup beberapa profesi yang relevan dalam situasi perang atau bencana alam, namun tidak secara eksplisit menyebutkan Tentara Nasional Indonesia dan Kepolisian Negara Republik Indonesia sebagai profesi utama yang diperlukan dalam dokumen referensi."
     },
     {
       "question": "Provinsi Daerah Istimewa Yogyakarta sering kali menjadi destinasi wisata bagi para wisatawan lokal maupun mancanegara. Apa saja destinasi wisata populer yang ada di Provinsi Daerah Istimewa Yogyakarta?",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 7.057,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
+      "latency": 10.596,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat dalam dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Sebutkan daftar negara yang termasuk dalam Perserikatan Bangsa-Bangsa atau PBB yang berawalan dari huruf A!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 7.065,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga skor yang diberikan adalah maksimal."
+      "latency": 9.275,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Berdasarkan UUD NRI 1945 Pasal 32 ayat (1) negara memajukan kebudayaan nasional Indonesia di tengah peradaban dunia. Sebutkan lagu daerah yang berasal dari Jawa Tengah!",
       "score": 0,
       "expected_min_score": 7,
       "passed": false,
-      "latency": 6.868,
-      "reason": "Jawaban peserta tidak ada dalam dokumen referensi, sehingga tidak dapat dinilai sebagai jawaban yang benar"
+      "latency": 7.094,
+      "reason": "Jawaban peserta tidak ada dalam dokumen referensi yang disediakan, sehingga tidak dapat dinilai kebenarannya berdasarkan UUD NRI 1945"
     },
     {
       "question": "Sebutkan nama-nama gubernur Provinsi Jawa Tengah dari tahun 1945 sampai tahun 2024!",
-      "score": 8,
+      "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 7.152,
-      "reason": "Jawaban peserta sebagian besar sesuai dengan kunci jawaban, namun tidak lengkap dan ada tambahan nama yang tidak tercantum dalam dokumen referensi."
+      "latency": 10.353,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Sebutkan organisasi masyarakat kebangsaan yang berperan mendorong kemerdekaan Indonesia!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 5.951,
-      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
+      "latency": 7.583,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Sebutkan contoh kata dari serapan bahasa Sanskerta menjadi bahasa Indonesia yang berawalan dari huruf vokal!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 5.743,
-      "reason": "Jawaban peserta sama persis dengan contoh kata dari serapan bahasa Sanskerta menjadi bahasa Indonesia yang berawalan dari huruf vokal yang terdapat dalam dokumen referensi."
+      "latency": 10.63,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Sebutkan nama-nama Wakil Presiden Republik Indonesia dari tahun 1945 sampai tahun 2024!",
-      "score": 10,
+      "score": 8,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 6.337,
-      "reason": "Jawaban peserta sesuai dengan daftar nama-nama Wakil Presiden Republik Indonesia dari tahun 1945 sampai tahun 2024 yang seharusnya, sehingga skor yang diberikan adalah maksimal."
+      "latency": 9.535,
+      "reason": "Jawaban peserta mencantumkan beberapa nama Wakil Presiden Republik Indonesia, namun dokumen referensi tidak menyebutkan daftar nama Wakil Presiden secara eksplisit. Jawaban peserta sebagian besar benar, tetapi tidak mencakup semua Wakil Presiden dari tahun 1945 sampai 2024."
     },
     {
       "question": "Perhimpunan Bangsa-Bangsa Asia Tenggara (ASEAN) didirikan pada tahun 1967. Sebutkan anggota ASEAN saat ini!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 7.173,
+      "latency": 8.068,
       "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga skor yang diberikan adalah maksimal."
     },
     {
@@ -267,47 +267,47 @@
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 6.85,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang ada di dokumen referensi, sehingga diberikan skor maksimal."
+      "latency": 10.355,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "MPR merupakan lembaga negara yang dikonseptualisasikan sebagai penjelmaan dari rakyat. Sebutkan nama-nama ketua MPRS/MPR RI!",
-      "score": 8,
+      "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 7.564,
-      "reason": "Jawaban peserta menyebutkan beberapa nama ketua MPRS/MPR RI, namun tidak ada daftar nama-nama ketua MPRS/MPR RI yang eksplisit dalam dokumen referensi. Namun, beberapa nama yang disebutkan peserta seperti Idham Chalid, Adam Malik, dan Amien Rais adalah tokoh-tokoh yang pernah menjabat sebagai ketua MPR RI, sehingga jawaban peserta memiliki kemiripan makna dengan kunci jawaban yang diharapkan."
+      "latency": 10.552,
+      "reason": "Jawaban peserta mencakup daftar nama-nama ketua MPRS/MPR RI yang lengkap dan sesuai dengan catatan sejarah, meskipun dokumen referensi tidak menyediakan informasi spesifik tentang daftar ini."
     },
     {
       "question": "Ketetapan MPRS Nomor XXV/MPRS/1966 mengatur tentang Pembubaran Partai Komunis Indonesia. Sebutkan nama-nama pahlawan yang gugur dalam Peristiwa G30S!",
       "score": 0,
       "expected_min_score": 7,
       "passed": false,
-      "latency": 7.392,
-      "reason": "Jawaban peserta tidak relevan dengan pertanyaan yang diajukan karena pertanyaan meminta nama-nama pahlawan yang gugur dalam Peristiwa G30S, sedangkan jawaban peserta menyebutkan nama-nama pahlawan yang gugur, tetapi dokumen referensi tidak menyediakan informasi yang relevan untuk memverifikasi jawaban tersebut."
+      "latency": 8.175,
+      "reason": "Dokumen referensi hanya membahas tentang pembubaran Partai Komunis Indonesia dan tidak menyebutkan nama-nama pahlawan yang gugur dalam Peristiwa G30S"
     },
     {
       "question": "Sebutkan provinsi yang termasuk dalam Waktu Indonesia bagian Tengah (WITA)!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 7.847,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga skor yang diberikan adalah maksimal."
+      "latency": 10.282,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Berdasarkan UU Nomor 12 Tahun 2023, sebutkan kabupaten yang berada di Provinsi Jawa Timur!",
-      "score": 10,
+      "score": 9,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 8.32,
-      "reason": "Jawaban peserta memiliki kemiripan makna yang sangat tinggi dengan kunci jawaban resmi, hanya saja jawaban peserta lebih lengkap dengan menyebutkan kabupaten-kabupaten lain di Jawa Timur yang tidak disebutkan dalam kunci jawaban resmi."
+      "latency": 10.395,
+      "reason": "Jawaban peserta hampir sama dengan kunci jawaban, namun ada tambahan beberapa kabupaten yang tidak termasuk dalam kunci jawaban resmi."
     },
     {
       "question": "Sebutkan alat-alat musik tradisional yang berasal dari Jawa Timur!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 5.933,
+      "latency": 10.904,
       "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
@@ -315,39 +315,39 @@
       "score": 8,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 6.221,
-      "reason": "Jawaban peserta menyebutkan beberapa nama ketua MPR RI, namun tidak ada daftar nama-nama ketua MPR RI secara eksplisit dalam dokumen referensi yang disediakan. Namun, jawaban peserta memiliki kemiripan makna dengan apa yang diharapkan, sehingga diberikan skor 8."
+      "latency": 8.157,
+      "reason": "Jawaban peserta menyebutkan beberapa nama ketua MPR RI, namun tidak ada dalam dokumen referensi yang diberikan. Namun, jawaban tersebut memiliki kemiripan makna dengan informasi yang seharusnya ada dalam dokumen resmi MPR RI."
     },
     {
       "question": "Sebutkan nama-nama selat yang ada di Indonesia!",
-      "score": 0,
+      "score": 10,
       "expected_min_score": 7,
-      "passed": false,
-      "latency": 6.999,
-      "reason": "Jawaban peserta tidak dapat diverifikasi karena tidak ada informasi tentang selat di Indonesia dalam dokumen referensi yang disediakan"
+      "passed": true,
+      "latency": 10.451,
+      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Provinsi Sumatera Utara memiliki 25 kabupaten. Sebutkan nama-nama kabupaten yang ada di Provinsi Sumatera Utara!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 7.37,
-      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga skor yang diberikan adalah 10 karena kemiripan makna yang sama."
+      "latency": 10.537,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang ada di dokumen referensi, sehingga diberikan skor maksimal."
     },
     {
       "question": "Sebutkan nama-nama gunung yang berada di Sumatera Utara!",
-      "score": 10,
+      "score": 9,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 8.486,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga skor maksimal diberikan."
+      "latency": 10.063,
+      "reason": "Jawaban peserta hampir sama dengan kunci jawaban, namun ada tambahan Gunung Sinabung yang tidak tercantum dalam dokumen referensi."
     },
     {
       "question": "Sebutkan kode plat nomor kendaraan di Pulau Sumatera!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 6.667,
+      "latency": 9.094,
       "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga skor yang diberikan adalah maksimal."
     },
     {
@@ -355,56 +355,56 @@
       "score": 8,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 8.193,
-      "reason": "Jawaban peserta menyebutkan nama-nama gubernur Provinsi Sumatera Utara, namun pertanyaan lomba hanya meminta dasar hukum pemilihan gubernur, bupati, dan walikota secara demokratis. Jawaban peserta tidak sepenuhnya salah, tetapi tidak sepenuhnya relevan dengan pertanyaan lomba."
+      "latency": 10.43,
+      "reason": "Jawaban peserta menyebutkan nama-nama gubernur Provinsi Sumatera Utara, namun pertanyaan lomba mengacu pada UUD NRI 1945 Pasal 18 ayat 4 yang menyatakan Gubernur, Bupati, dan Walikota dipilih secara demokratis. Jawaban peserta tidak secara langsung menjawab pertanyaan, tetapi menyediakan informasi terkait gubernur Provinsi Sumatera Utara."
     },
     {
       "question": "Sebutkan jenis-jenis tanaman asli di Indonesia!",
-      "score": 0,
-      "expected_min_score": 7,
-      "passed": false,
-      "latency": 7.158,
-      "reason": "Jawaban peserta tidak ada dalam dokumen referensi, sehingga tidak dapat dinilai kemiripan maknanya"
-    },
-    {
-      "question": "Sebutkan fraksi dan kelompok yang ada di MPR periode 2019 hingga 2024!",
-      "score": 8,
-      "expected_min_score": 7,
-      "passed": true,
-      "latency": 8.084,
-      "reason": "Jawaban peserta menyebutkan beberapa partai politik yang ada di Indonesia, namun tidak ada informasi yang cukup dalam dokumen referensi untuk memastikan kebenaran jawaban tersebut. Namun, jawaban peserta memiliki kemiripan makna dengan konsep fraksi dan kelompok di MPR, sehingga diberikan skor 8."
-    },
-    {
-      "question": "Sebutkan provinsi yang termasuk dalam Waktu Indonesia bagian Barat (WIB)!",
-      "score": 8,
-      "expected_min_score": 7,
-      "passed": true,
-      "latency": 7.682,
-      "reason": "Jawaban peserta sebagian besar benar, namun ada beberapa provinsi yang tidak termasuk dalam WIB seperti Banten, Jawa Barat, Jawa Tengah, Daerah Istimewa Yogyakarta, Jawa Timur, Kalimantan Barat, Kalimantan Tengah"
-    },
-    {
-      "question": "Berdasarkan Peraturan Daerah Provinsi Bali Nomor 4 Tahun 2019 tentang Desa Adat di Bali pada Pasal 2, pengaturan Desa Adat berdasarkan apa saja?",
-      "score": 9,
-      "expected_min_score": 7,
-      "passed": true,
-      "latency": 8.602,
-      "reason": "Jawaban peserta hampir sama dengan kunci jawaban, namun terdapat tambahan kata 'Keberlanjutan' yang tidak ada di dokumen referensi."
-    },
-    {
-      "question": "Beberapa negara dan Uni Eropa menjalin hubungan multilateral lewat sebuah forum bernama Group of Twenty (G20). Sebutkan negara-negara yang tergabung dalam G20!",
       "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 6.039,
-      "reason": "Jawaban peserta sama persis dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga skor yang diberikan adalah maksimal."
+      "latency": 10.236,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
+    },
+    {
+      "question": "Sebutkan fraksi dan kelompok yang ada di MPR periode 2019 hingga 2024!",
+      "score": 10,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 9.432,
+      "reason": "Jawaban peserta mencakup partai-partai politik utama di Indonesia dan menyebutkan kelompok Dewan Perwakilan Daerah, yang secara umum sesuai dengan struktur MPR. Namun, karena tidak ada informasi spesifik dalam dokumen referensi tentang periode 2019-2024, penilaian didasarkan pada kemiripan makna dan cakupan partai-partai utama."
+    },
+    {
+      "question": "Sebutkan provinsi yang termasuk dalam Waktu Indonesia bagian Barat (WIB)!",
+      "score": 10,
+      "expected_min_score": 7,
+      "passed": true,
+      "latency": 11.457,
+      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, sehingga diberikan skor maksimal."
+    },
+    {
+      "question": "Berdasarkan Peraturan Daerah Provinsi Bali Nomor 4 Tahun 2019 tentang Desa Adat di Bali pada Pasal 2, pengaturan Desa Adat berdasarkan apa saja?",
+      "score": 0,
+      "expected_min_score": 7,
+      "passed": false,
+      "latency": 8.205,
+      "reason": "Jawaban peserta tidak sesuai dengan dokumen referensi yang menyatakan bahwa pengaturan Desa Adat diatur dengan undang-undang, bukan berdasarkan kawigunan, padumpada, manyama braya, dan lain-lain."
+    },
+    {
+      "question": "Beberapa negara dan Uni Eropa menjalin hubungan multilateral lewat sebuah forum bernama Group of Twenty (G20). Sebutkan negara-negara yang tergabung dalam G20!",
+      "score": 0,
+      "expected_min_score": 7,
+      "passed": false,
+      "latency": 3.578,
+      "reason": "API Error (Status 500)"
     },
     {
       "question": "Sebutkan nama-nama gubernur atau penjabat Provinsi Bali dari tahun 1950 sampai tahun 2024!",
       "score": 0,
       "expected_min_score": 7,
       "passed": false,
-      "latency": 7.628,
-      "reason": "Jawaban peserta tidak dapat diverifikasi karena informasi tentang gubernur atau penjabat Provinsi Bali dari tahun 1950 sampai tahun 2024 tidak tersedia dalam dokumen referensi yang disediakan."
+      "latency": 3.82,
+      "reason": "API Error (Status 500)"
     }
   ]
 }
