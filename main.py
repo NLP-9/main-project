@@ -36,7 +36,7 @@ db = Chroma(
 )
 
 llm = ChatGroq(
-    model="llama-3.3-70b-versatile", 
+    model="llama-3.1-8b-instant", 
     temperature=0.1,
     model_kwargs={"response_format": {"type": "json_object"}}
 )
@@ -78,7 +78,7 @@ async def evaluate_answer(req: EvaluationRequest):
         4. Jika jawaban salah total atau tidak nyambung, beri skor 0.
         5. Berikan penjelasan alasan penilaian yang singkat dan transparan.
 
-        WAKIB KEMBALIKAN OUTPUT DALAM FORMAT JSON BERIKUT:
+        WAJIB KEMBALIKAN OUTPUT DALAM FORMAT JSON BERIKUT:
         {{
             "kunci_jawaban": "isi kunci jawaban resmi",
             "sumber_dokumen": "nama file dan halaman",

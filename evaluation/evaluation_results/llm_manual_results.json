@@ -1,50 +1,92 @@
 {
   "summary": {
-    "mode": "manual",
     "accuracy": 1.0,
-    "passed": 5,
-    "total": 5
+    "avg_bertscore": 0.9327,
+    "avg_rouge_1": 0.6585,
+    "avg_rouge_l": 0.6585,
+    "avg_meteor": 0.7011,
+    "avg_faithfulness": 0.5,
+    "passed": 6,
+    "total": 6
   },
   "details": [
     {
-      "question": "Apa isi Pasal 1 ayat 1 UUD 1945?",
+      "question": "Di mana diatur ketentuan bahwa kedaulatan ada di tangan rakyat dan dijalankan berdasarkan konstitusi?",
       "score": 10,
       "expected_min_score": 8,
       "passed": true,
-      "latency": 5.05,
-      "reason": "Jawaban peserta sama dengan kunci jawaban yang terdapat pada dokumen referensi, yaitu Pasal 1 ayat 1 UUD 1945."
+      "latency": 8.111,
+      "bert_score": 0.9062,
+      "rouge_1": 0.5,
+      "rouge_l": 0.5,
+      "meteor": 0.8314,
+      "faithfulness": 0.0,
+      "reason": "Jawaban Peserta sama dengan kunci jawaban resmi, yaitu Pasal 1 ayat (2) UUD 1945. Maknanya sama dan tidak ada perbedaan redaksi kata/singkatan."
     },
     {
-      "question": "Apa makna Bhinneka Tunggal Ika?",
+      "question": "Sebutkan asas-asas pelaksanaan pemilihan umum di Indonesia menurut UUD 1945!",
       "score": 10,
       "expected_min_score": 8,
       "passed": true,
-      "latency": 3.098,
-      "reason": "Jawaban peserta memiliki makna yang sama dengan kunci jawaban, yaitu 'berbeda-beda tetapi satu jua', sehingga skor maksimal diberikan"
+      "latency": 6.247,
+      "bert_score": 1.0,
+      "rouge_1": 1.0,
+      "rouge_l": 1.0,
+      "meteor": 0.9996,
+      "faithfulness": 0.0,
+      "reason": "Jawaban Peserta sama dengan asas-asas pelaksanaan pemilihan umum di Indonesia menurut UUD 1945, yaitu langsung, umum, bebas, rahasia, jujur, dan adil, yang tercantum dalam Pasal 2 (2) UUD 1945."
     },
     {
-      "question": "Siapa yang berwenang mengubah UUD?",
+      "question": "Di mana semboyan Bhinneka Tunggal Ika diletakkan pada lambang negara kita?",
       "score": 10,
       "expected_min_score": 8,
       "passed": true,
-      "latency": 2.833,
-      "reason": "Jawaban Peserta 'MPR' sesuai dengan dokumen referensi yang menyatakan MPR berwenang mengubah dan menetapkan Undang-Undang Dasar (Pasal 3 Ayat 1)"
+      "latency": 6.867,
+      "bert_score": 0.943,
+      "rouge_1": 0.7692,
+      "rouge_l": 0.7692,
+      "meteor": 0.7217,
+      "faithfulness": 1.0,
+      "reason": "Jawaban Peserta sama dengan kunci jawaban resmi, yaitu semboyan Bhinneka Tunggal Ika diletakkan pada pita yang dicengkeram oleh kaki burung Garuda Pancasila, sesuai dengan Pasal 36A Ringkasan_Empat_Pilar_MPR_RI.pdf hal. 14."
     },
     {
-      "question": "Apa fungsi Pancasila?",
+      "question": "Dari kitab karangan siapakah kalimat Bhinneka Tunggal Ika pertama kali diambil?",
+      "score": 10,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 13.718,
+      "bert_score": 0.8465,
+      "rouge_1": 0.1818,
+      "rouge_l": 0.1818,
+      "meteor": 0.1852,
+      "faithfulness": 0.0,
+      "reason": "Jawaban Peserta sama dengan informasi yang disebutkan dalam Ringkasan_Empat_Pilar_MPR_RI.pdf hal. 13, yaitu bahwa kalimat Bhinneka Tunggal Ika pertama kali diambil dari Kitab Sutasoma karangan Mpu Tantular."
+    },
+    {
+      "question": "Ketetapan MPR Nomor berapa yang mengatur tentang sumber hukum dan tata urutan peraturan perundang-undangan di Indonesia?",
       "score": 8,
+      "expected_min_score": 8,
+      "passed": true,
+      "latency": 12.42,
+      "bert_score": 0.9005,
+      "rouge_1": 0.5,
+      "rouge_l": 0.5,
+      "meteor": 0.4688,
+      "faithfulness": 1.0,
+      "reason": "Jawaban Peserta tidak sepenuhnya benar karena tidak menyebutkan nomor ketetapan yang tepat. Namun, jawabannya masih terkait dengan sumber hukum dan tata urutan peraturan perundang-undangan di Indonesia."
+    },
+    {
+      "question": "Apa tujuan dibentuknya Ketetapan MPR Nomor I/MPR/2003?",
+      "score": 10,
       "expected_min_score": 7,
       "passed": true,
-      "latency": 3.121,
-      "reason": "Jawaban peserta hanya menyebutkan 'Dasar negara Indonesia' yang merupakan bagian dari fungsi Pancasila, namun tidak menyebutkan secara lengkap seperti dalam dokumen referensi."
-    },
-    {
-      "question": "Apa makna NKRI?",
-      "score": 8,
-      "expected_min_score": 8,
-      "passed": true,
-      "latency": 3.311,
-      "reason": "Jawaban peserta benar namun tidak lengkap, hanya menyebutkan singkatan dan nama resmi NKRI tanpa penjelasan lebih lanjut tentang makna atau karakteristiknya"
+      "latency": 14.868,
+      "bert_score": 1.0,
+      "rouge_1": 1.0,
+      "rouge_l": 1.0,
+      "meteor": 0.9999,
+      "faithfulness": 1.0,
+      "reason": "Jawaban Peserta sama dengan isi Pasal 2 Ketetapan MPR RI Nomor I/MPR/2003, sehingga skor maksimal diberikan."
     }
   ]
 }

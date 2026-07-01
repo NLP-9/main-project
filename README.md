@@ -92,3 +92,8 @@ npm run dev
 ```
 
 Buka localhost:3000
+
+## 8. Kode Evaluasi
+
+python evaluation_retrieval.py --mode manual
+python evaluate_llm.py --mode manual
