@@ -1,8 +1,33 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Shield, Award, AlertCircle, HelpCircle, RefreshCw, ChessQueen, Clock, Clipboard, Mic, MicOff } from 'lucide-react';
-import Buzzer from './components/buzzer';
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Shield,
+  Crown,
+  RefreshCw,
+  Clock,
+  Clipboard,
+  Mic,
+  MicOff,
+  BookOpen,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
+import Buzzer from "./components/buzzer";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 
 interface Kontestan {
   id: number;
@@ -18,55 +43,62 @@ interface EvaluationResult {
   raw_context: string;
 }
 
+// Dipakai untuk buzzer (bg/border/glow saat aktif) dan aksen kecil (dot leaderboard, badge "Tekan!").
 const COLOR_SCHEMES: { [key: number]: any } = {
   1: {
     bg: "bg-amber-600",
     border: "border-amber-400",
-    glow: "shadow-[0_0_50px_rgba(245,158,11,0.4)]",
-    text: "text-amber-400",
-    badgeBg: "bg-amber-500/10",
-    badgeText: "text-amber-400"
+    glow: "shadow-[0_0_40px_rgba(245,158,11,0.35)]",
+    text: "text-amber-600 dark:text-amber-400",
+    dot: "bg-amber-500",
+    badgeBg: "bg-amber-500",
+    badgeText: "text-amber-950",
   },
   2: {
     bg: "bg-cyan-600",
     border: "border-cyan-400",
-    glow: "shadow-[0_0_50px_rgba(6,182,212,0.4)]",
-    text: "text-cyan-400",
-    badgeBg: "bg-cyan-500/10",
-    badgeText: "text-cyan-400"
+    glow: "shadow-[0_0_40px_rgba(6,182,212,0.35)]",
+    text: "text-cyan-600 dark:text-cyan-400",
+    dot: "bg-cyan-500",
+    badgeBg: "bg-cyan-500",
+    badgeText: "text-cyan-950",
   },
   3: {
     bg: "bg-emerald-600",
     border: "border-emerald-400",
-    glow: "shadow-[0_0_50px_rgba(16,185,129,0.4)]",
-    text: "text-emerald-400",
-    badgeBg: "bg-emerald-500/10",
-    badgeText: "text-emerald-400"
+    glow: "shadow-[0_0_40px_rgba(16,185,129,0.35)]",
+    text: "text-emerald-600 dark:text-emerald-400",
+    dot: "bg-emerald-500",
+    badgeBg: "bg-emerald-500",
+    badgeText: "text-emerald-950",
   },
   4: {
     bg: "bg-fuchsia-600",
     border: "border-fuchsia-400",
-    glow: "shadow-[0_0_50px_rgba(217,70,239,0.4)]",
-    text: "text-fuchsia-400",
-    badgeBg: "bg-fuchsia-500/10",
-    badgeText: "text-fuchsia-400"
+    glow: "shadow-[0_0_40px_rgba(217,70,239,0.35)]",
+    text: "text-fuchsia-600 dark:text-fuchsia-400",
+    dot: "bg-fuchsia-500",
+    badgeBg: "bg-fuchsia-500",
+    badgeText: "text-fuchsia-950",
   },
   5: {
     bg: "bg-rose-600",
     border: "border-rose-400",
-    glow: "shadow-[0_0_50px_rgba(244,63,94,0.4)]",
-    text: "text-rose-400",
-    badgeBg: "bg-rose-500/10",
-    badgeText: "text-rose-400"
+    glow: "shadow-[0_0_40px_rgba(244,63,94,0.35)]",
+    text: "text-rose-600 dark:text-rose-400",
+    dot: "bg-rose-500",
+    badgeBg: "bg-rose-500",
+    badgeText: "text-rose-950",
   },
   6: {
     bg: "bg-indigo-600",
     border: "border-indigo-400",
-    glow: "shadow-[0_0_50px_rgba(99,102,241,0.4)]",
-    text: "text-indigo-400",
-    badgeBg: "bg-indigo-500/10",
-    badgeText: "text-indigo-400"
-  }
+    glow: "shadow-[0_0_40px_rgba(99,102,241,0.35)]",
+    text: "text-indigo-600 dark:text-indigo-400",
+    dot: "bg-indigo-500",
+    badgeBg: "bg-indigo-500",
+    badgeText: "text-indigo-950",
+  },
 };
 
 export default function LCCDashboard() {
@@ -76,23 +108,23 @@ export default function LCCDashboard() {
     { id: 2, nama: "Tim B", skorAkumulasi: 0 },
     { id: 3, nama: "Tim C", skorAkumulasi: 0 },
   ]);
-  
+
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [pertanyaan, setPertanyaan] = useState<string>("");
   const [buzzerWinner, setBuzzerWinner] = useState<number | null>(null);
   const [jawabanInput, setJawabanInput] = useState<string>("");
   const [lockedOutUsers, setLockedOutUsers] = useState<number[]>([]);
-  
+
   const [secondsLeft, setSecondsLeft] = useState<number>(45);
   const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
-  
+
   const [loading, setLoading] = useState<boolean>(false);
   const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
 
   // Voice to Text States
   const [isListeningPertanyaan, setIsListeningPertanyaan] = useState<boolean>(false);
   const [isListeningJawaban, setIsListeningJawaban] = useState<boolean>(false);
-  
+
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const recognitionRef = useRef<any>(null);
@@ -100,8 +132,8 @@ export default function LCCDashboard() {
   useEffect(() => {
     audioRef.current = new Audio("/bzzz.mp3");
 
-    // Inisialisasi Web Speech API Browser
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (SpeechRecognition) {
       const rec = new SpeechRecognition();
       rec.continuous = false;
@@ -129,7 +161,7 @@ export default function LCCDashboard() {
   const handleTimeOut = () => {
     setIsTimerActive(false);
     if (buzzerWinner !== null) {
-      setLockedOutUsers(prev => [...prev, buzzerWinner]);
+      setLockedOutUsers((prev) => [...prev, buzzerWinner]);
       setBuzzerWinner(null);
       setJawabanInput("");
     }
@@ -138,7 +170,7 @@ export default function LCCDashboard() {
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
   const handleSetupGame = () => {
@@ -171,13 +203,11 @@ export default function LCCDashboard() {
     }
   };
 
-    // Voice to Text Pertanyaan
   const toggleVoicePertanyaan = () => {
     if (!recognitionRef.current) {
       alert("Browser kamu tidak mendukung fitur Speech Recognition.");
       return;
     }
-
     if (isListeningPertanyaan) {
       recognitionRef.current.stop();
       setIsListeningPertanyaan(false);
@@ -188,23 +218,17 @@ export default function LCCDashboard() {
         setPertanyaan(speechToText);
         setIsListeningPertanyaan(false);
       };
-      recognitionRef.current.onerror = () => {
-        setIsListeningPertanyaan(false);
-      };
-      recognitionRef.current.onend = () => {
-        setIsListeningPertanyaan(false);
-      };
+      recognitionRef.current.onerror = () => setIsListeningPertanyaan(false);
+      recognitionRef.current.onend = () => setIsListeningPertanyaan(false);
       recognitionRef.current.start();
     }
   };
 
-  // Voice to Text Kontestan
   const toggleVoiceJawaban = () => {
     if (!recognitionRef.current) {
       alert("Browser kamu tidak mendukung fitur Speech Recognition.");
       return;
     }
-
     if (isListeningJawaban) {
       recognitionRef.current.stop();
       setIsListeningJawaban(false);
@@ -215,12 +239,8 @@ export default function LCCDashboard() {
         setJawabanInput(speechToText);
         setIsListeningJawaban(false);
       };
-      recognitionRef.current.onerror = () => {
-        setIsListeningJawaban(false);
-      };
-      recognitionRef.current.onend = () => {
-        setIsListeningJawaban(false);
-      };
+      recognitionRef.current.onerror = () => setIsListeningJawaban(false);
+      recognitionRef.current.onend = () => setIsListeningJawaban(false);
       recognitionRef.current.start();
     }
   };
@@ -230,9 +250,9 @@ export default function LCCDashboard() {
     setIsTimerActive(false);
     setLoading(true);
     setEvaluation(null);
-    
-    const activeTeam = kontestans.find(k => k.id === buzzerWinner);
-    
+
+    const activeTeam = kontestans.find((k) => k.id === buzzerWinner);
+
     try {
       const res = await fetch("http://localhost:8000/api/evaluate", {
         method: "POST",
@@ -240,19 +260,21 @@ export default function LCCDashboard() {
         body: JSON.stringify({
           pertanyaan: pertanyaan,
           nama_kontestan: activeTeam?.nama || "Kontestan",
-          jawaban_kontestan: jawabanInput
-        })
+          jawaban_kontestan: jawabanInput,
+        }),
       });
-      
+
       const data: EvaluationResult = await res.json();
       setEvaluation(data);
-      
+
       if (data.skor > 0) {
-        setKontestans(prev => prev.map(k => 
-          k.id === buzzerWinner ? { ...k, skorAkumulasi: k.skorAkumulasi + data.skor } : k
-        ));
+        setKontestans((prev) =>
+          prev.map((k) =>
+            k.id === buzzerWinner ? { ...k, skorAkumulasi: k.skorAkumulasi + data.skor } : k
+          )
+        );
       } else {
-        setLockedOutUsers(prev => [...prev, buzzerWinner]);
+        setLockedOutUsers((prev) => [...prev, buzzerWinner]);
         setBuzzerWinner(null);
         setJawabanInput("");
       }
@@ -276,249 +298,342 @@ export default function LCCDashboard() {
 
   if (!gameStarted) {
     return (
-      <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-6">
-        <div className="bg-slate-900 border border-slate-800 p-8 rounded-2xl max-w-md w-full shadow-2xl text-center">
-          <Shield className="w-16 h-16 text-blue-500 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold tracking-tight mb-2">SmartJuri-AI Arena</h1>
-          <p className="text-slate-400 text-sm mb-6">Konfigurasi jumlah kontestan untuk memulai kompetisi cerdas cermat otomatis.</p>
-          <div className="mb-6 text-left">
-            <label className="text-sm font-semibold text-slate-300 block mb-2">Jumlah Kontestan Regu:</label>
-            <input 
-              type="number" min="2" max="6"
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
+        <Card className="max-w-md w-full shadow-lg">
+          <CardHeader className="text-center space-y-3">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <Shield className="w-7 h-7" />
+            </div>
+            <CardTitle className="text-2xl">SmartJuri-AI Arena</CardTitle>
+            <CardDescription>
+              Konfigurasi jumlah kontestan untuk memulai kompetisi cerdas cermat otomatis.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2 text-left">
+            <label className="text-sm font-medium text-foreground">Jumlah Kontestan Regu</label>
+            <Input
+              type="number"
+              min={2}
+              max={6}
               value={jumlahPeserta}
               onChange={(e) => setJumlahPeserta(Number(e.target.value))}
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"
             />
-          </div>
-          <button 
-            onClick={handleSetupGame}
-            className="w-full bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 py-3 rounded-xl font-bold transition-all shadow-lg cursor-pointer"
-          >
-            Masuk Arena Lomba
-          </button>
-        </div>
+          </CardContent>
+          <CardFooter>
+            <Button onClick={handleSetupGame} className="w-full" size="lg">
+              Masuk Arena Lomba
+            </Button>
+          </CardFooter>
+        </Card>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-background text-foreground flex flex-col md:flex-row">
       {/* SIDEBAR PANEL */}
-      <aside className="w-full md:w-80 bg-slate-900 border-r border-slate-800 p-6 flex flex-col justify-between shadow-2xl">
-        <div>
-          <div className="flex items-center gap-3 mb-8">
-            <div className="bg-blue-600 p-2 rounded-xl text-white shadow-md shadow-blue-500/20">
-              <Shield className="w-6 h-6" />
+      <aside className="w-full md:w-80 border-r bg-muted/30 p-6 flex flex-col justify-between">
+        <div className="space-y-8">
+          <div className="flex items-center gap-3">
+            <div className="bg-primary text-primary-foreground p-2 rounded-lg">
+              <Shield className="w-5 h-5" />
             </div>
-            <span className="font-bold text-xl tracking-wide text-white">SmartJuri-AI</span>
+            <span className="font-semibold text-lg tracking-tight">SmartJuri-AI</span>
           </div>
-          <div className="space-y-4">
-            <div className="text-xs font-semibold text-slate-500 tracking-wider uppercase">System Status</div>
-            <div className="bg-emerald-950/40 border border-emerald-900/50 rounded-xl p-3 flex items-center gap-3 text-emerald-400 text-sm">
-              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Core Engine API Connected
+
+          <div className="space-y-3">
+            <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+              System Status
             </div>
+            <Card className="border-emerald-500/30 bg-emerald-500/5 py-0">
+              <CardContent className="flex items-center gap-2 px-3 py-2.5 text-sm text-emerald-600 dark:text-emerald-400">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                Core Engine API Connected
+              </CardContent>
+            </Card>
           </div>
-          <div className="mt-8 space-y-3 border-solid border-slate-100/10 border rounded-2xl p-5 bg-slate-950/50">
-            <div className='flex flex-col gap-1 mb-4'>
-              <div className='flex flex-row gap-2 items-center'>
-                <ChessQueen className='text-amber-400 w-5 h-5'/>
-                <div className="text-xl font-bold tracking-tight text-white">Leaderboard</div>
+
+          <Card>
+            <CardHeader className="pb-3">
+              <div className="flex items-center gap-2">
+                <Crown className="text-amber-500 w-4 h-4" />
+                <CardTitle className="text-base">Leaderboard</CardTitle>
               </div>
-              <div className="text-xs text-slate-500">Papan skor kontestan</div>
-            </div>
-            <div className="space-y-2">
-              {kontestans.map(k => (
-                <div key={k.id} className="bg-slate-800/40 border border-slate-700/50 rounded-xl p-3 flex justify-between items-center">
-                  <span className="font-medium text-slate-300 text-sm">{k.nama}</span>
-                  <span className="bg-slate-900 px-3 py-1 rounded-lg font-bold text-blue-400 border border-slate-700 text-sm">{k.skorAkumulasi}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+              <CardDescription>Papan skor kontestan</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              {kontestans
+                .slice()
+                .sort((a, b) => b.skorAkumulasi - a.skorAkumulasi)
+                .map((k) => {
+                  const scheme = COLOR_SCHEMES[k.id] || COLOR_SCHEMES[1];
+                  return (
+                    <div
+                      key={k.id}
+                      className="flex items-center justify-between rounded-lg border bg-background px-3 py-2"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className={`h-2 w-2 rounded-full ${scheme.dot}`} />
+                        <span className="text-sm font-medium">{k.nama}</span>
+                      </div>
+                      <Badge variant="secondary" className="font-mono">
+                        {k.skorAkumulasi}
+                      </Badge>
+                    </div>
+                  );
+                })}
+            </CardContent>
+          </Card>
         </div>
-        <button onClick={() => setGameStarted(false)} className="text-sm text-slate-500 hover:text-red-400 flex items-center gap-2 mt-6 cursor-pointer">
-          <RefreshCw className="w-4 h-4" /> Reset Konfigurasi Awal
-        </button>
+
+        <Button
+          variant="ghost"
+          onClick={() => setGameStarted(false)}
+          className="justify-start text-muted-foreground hover:text-destructive mt-6"
+        >
+          <RefreshCw className="w-4 h-4 mr-2" /> Reset Konfigurasi Awal
+        </Button>
       </aside>
 
       {/* DASHBOARD KONTEN UTAMA */}
       <main className="flex-1 p-6 lg:p-10 space-y-6 max-w-5xl mx-auto w-full">
         {/* Header Dashboard & Timer Panel */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-b border-slate-900 pb-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-6 border-b">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-white">Evaluation Dashboard</h1>
-            <p className="text-sm text-slate-400 mt-1">Enter contest details and team answers for semantic analysis.</p>
+            <h1 className="text-2xl font-semibold tracking-tight">Evaluation Dashboard</h1>
+            <p className="text-sm text-muted-foreground mt-1">
+              Enter contest details and team answers for semantic analysis.
+            </p>
           </div>
-          
-          <div className="flex items-center gap-3 self-end sm:self-auto">
-            <div className="bg-slate-900 border border-slate-800 px-5 py-2.5 rounded-full flex items-center gap-4 shadow-xl">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Babak Penyisihan</span>
-              <div className={`flex items-center gap-2 px-4 py-1 rounded-full border transition-colors ${isTimerActive ? 'bg-blue-950/40 border-blue-500/50 text-blue-400' : 'bg-slate-800 border-slate-700 text-slate-500'}`}>
-                <Clock className={`w-4 h-4 ${isTimerActive ? 'animate-pulse' : ''}`} />
-                <span className="font-mono font-bold text-xl">{formatTime(secondsLeft)}</span>
-              </div>
-            </div>
-          </div>
+
+          <Card className="py-0">
+            <CardContent className="flex items-center gap-4 px-4 py-2.5">
+              <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                Babak Penyisihan
+              </span>
+              <Badge
+                variant={isTimerActive ? "default" : "secondary"}
+                className="gap-1.5 font-mono text-sm px-3 py-1"
+              >
+                <Clock className={`w-3.5 h-3.5 ${isTimerActive ? "animate-pulse" : ""}`} />
+                {formatTime(secondsLeft)}
+              </Badge>
+            </CardContent>
+          </Card>
         </div>
 
         {/* INPUT SOAL PERTANYAAN */}
-        <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-xl">
-          <div className="flex justify-between items-center">
-            <h2 className="text-xs font-bold tracking-widest text-slate-400 flex items-center gap-2 uppercase">
-              Contest Question Context
-            </h2>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <div>
+              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-semibold">
+                Input Soal Disini
+              </CardTitle>
+            </div>
             <div className="flex items-center gap-2">
-              <button
+              <Button
+                variant={isListeningPertanyaan ? "destructive" : "outline"}
+                size="sm"
                 onClick={toggleVoicePertanyaan}
                 disabled={evaluation !== null || buzzerWinner !== null}
-                className={`border px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 transition cursor-pointer ${
-                  isListeningPertanyaan 
-                    ? "bg-red-600/20 border-red-500 text-red-400 animate-pulse" 
-                    : "bg-slate-800 hover:bg-slate-700 text-slate-300 border-slate-700 disabled:opacity-30"
-                }`}
               >
-                {isListeningPertanyaan ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
+                {isListeningPertanyaan ? (
+                  <MicOff className="w-3.5 h-3.5 mr-1.5" />
+                ) : (
+                  <Mic className="w-3.5 h-3.5 mr-1.5" />
+                )}
                 {isListeningPertanyaan ? "Mendengarkan..." : "Voice Input"}
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={handlePastePertanyaan}
                 disabled={evaluation !== null || buzzerWinner !== null}
-                className="bg-slate-800 hover:bg-slate-700 text-slate-300 disabled:opacity-30 border border-slate-700 px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 transition cursor-pointer"
               >
-                <Clipboard className="w-3.5 h-3.5" /> Paste Soal
-              </button>
+                <Clipboard className="w-3.5 h-3.5 mr-1.5" /> Paste Soal
+              </Button>
             </div>
-          </div>
-          <textarea 
-            rows={2}
-            value={pertanyaan}
-            onChange={(e) => setPertanyaan(e.target.value)}
-            disabled={evaluation !== null || buzzerWinner !== null}
-            placeholder={isListeningPertanyaan ? "Silakan bicara sekarang, juri..." : "Tuliskan atau paste pertanyaan kompetisi hukum/kewarganegaraan di sini..."}
-            className="w-full bg-slate-950 border border-slate-800 text-xl font-medium rounded-2xl p-5 text-slate-200 focus:outline-none focus:border-blue-500 transition disabled:opacity-50"
-          />
-          <div className='flex flex-row gap-2 pt-1'>
-            <span className='bg-slate-800 text-slate-400 border border-slate-700 px-4 py-1.5 rounded-full text-xs font-semibold'>MPR RI</span>
-            <span className='bg-slate-800 text-slate-400 border border-slate-700 px-4 py-1.5 rounded-full text-xs font-semibold'>Pancasila</span>
-            <span className='bg-slate-800 text-slate-400 border border-slate-700 px-4 py-1.5 rounded-full text-xs font-semibold'>UUD 1945</span>
-          </div>
-        </div>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Textarea
+              rows={3}
+              value={pertanyaan}
+              onChange={(e) => setPertanyaan(e.target.value)}
+              disabled={evaluation !== null || buzzerWinner !== null}
+              placeholder={
+                isListeningPertanyaan
+                  ? "Silakan bicara sekarang, juri..."
+                  : "Tuliskan atau paste pertanyaan kompetisi hukum/kewarganegaraan di sini..."
+              }
+              className="text-lg"
+            />
+            <div className="flex flex-row gap-2">
+              <Badge variant="outline">MPR RI</Badge>
+              <Badge variant="outline">Pancasila</Badge>
+              <Badge variant="outline">UUD 1945</Badge>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* INTERFACE GRID TOMBOL BUZZER */}
         {pertanyaan && !evaluation && (
-          <div className="bg-slate-900/30 border border-slate-800/60 p-6 rounded-3xl space-y-5 shadow-xl">
-            <h2 className="text-sm font-bold tracking-widest text-slate-400 flex items-center gap-2 uppercase">
-              Contestant Submissions (Buzzer)
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {kontestans.map(k => {
-                const isWinner = buzzerWinner === k.id;
-                const isDisabled = (buzzerWinner !== null && !isWinner) || lockedOutUsers.includes(k.id);
-                const isLockedOut = lockedOutUsers.includes(k.id);
-                const currentScheme = COLOR_SCHEMES[k.id] || COLOR_SCHEMES[1];
-                
-                return (
-                  <Buzzer
-                    key={k.id}
-                    namaTim={k.nama}
-                    isActive={isWinner}
-                    isDisabled={isDisabled}
-                    isLockedOut={isLockedOut}
-                    onClick={() => handleBuzzerClick(k.id)}
-                    colorScheme={currentScheme}
-                  />
-                );
-              })}
-            </div>
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-semibold">
+                Contestant Submissions (Buzzer)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {kontestans.map((k) => {
+                  const isWinner = buzzerWinner === k.id;
+                  const isDisabled = (buzzerWinner !== null && !isWinner) || lockedOutUsers.includes(k.id);
+                  const isLockedOut = lockedOutUsers.includes(k.id);
+                  const currentScheme = COLOR_SCHEMES[k.id] || COLOR_SCHEMES[1];
+
+                  return (
+                    <Buzzer
+                      key={k.id}
+                      namaTim={k.nama}
+                      isActive={isWinner}
+                      isDisabled={isDisabled}
+                      isLockedOut={isLockedOut}
+                      onClick={() => handleBuzzerClick(k.id)}
+                      colorScheme={currentScheme}
+                    />
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
         )}
 
         {/* PANEL MASUKAN JAWABAN TIM TERCEPAT */}
         {buzzerWinner !== null && !evaluation && (
-          <div className="bg-slate-900 border border-blue-500/30 p-6 rounded-3xl space-y-4 shadow-2xl shadow-blue-500/5 animate-in fade-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-sm text-blue-400 font-bold uppercase tracking-widest">
-                Input Jawaban: {kontestans.find(k => k.id === buzzerWinner)?.nama}
-              </div>
-              <span className={`text-xl font-mono font-bold ${secondsLeft < 15 ? 'text-red-500 animate-pulse' : 'text-blue-400'}`}>
-                {formatTime(secondsLeft)}
-              </span>
-            </div>
-            <div className="relative flex items-center">
-              <input 
-                type="text"
-                autoFocus
-                value={jawabanInput}
-                onChange={(e) => setJawabanInput(e.target.value)}
-                placeholder={isListeningJawaban ? "Silakan bicara, tim tercepat..." : `Ketik transkrip jawaban lisan dari ${kontestans.find(k => k.id === buzzerWinner)?.nama}...`}
-                className="w-full bg-slate-950 border border-slate-800 rounded-2xl pl-6 pr-14 py-4 text-white text-lg focus:outline-none focus:border-blue-500 transition"
-              />
-              <button
-                onClick={toggleVoiceJawaban}
-                className={`absolute right-4 p-2.5 rounded-xl transition cursor-pointer ${
-                  isListeningJawaban 
-                    ? "bg-red-600 text-white animate-pulse shadow-lg shadow-red-500/30" 
-                    : "bg-slate-800 text-slate-400 hover:text-white"
+          <Card className="border-primary/30">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0">
+              <CardTitle className="text-sm uppercase tracking-wide text-primary font-semibold">
+                Input Jawaban: {kontestans.find((k) => k.id === buzzerWinner)?.nama}
+              </CardTitle>
+              <span
+                className={`text-lg font-mono font-semibold ${
+                  secondsLeft < 15 ? "text-destructive animate-pulse" : "text-primary"
                 }`}
               >
-                {isListeningJawaban ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
-              </button>
-            </div>
-            <button
-              onClick={handleProsesPenilaian}
-              disabled={loading || !jawabanInput.trim() || isListeningJawaban}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-4 rounded-2xl transition shadow-xl disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              {loading ? <RefreshCw className="animate-spin w-5 h-5" /> : "🚀 MULAI EVALUASI SEMANTIK"}
-            </button>
-          </div>
+                {formatTime(secondsLeft)}
+              </span>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="relative flex items-center">
+                <Input
+                  autoFocus
+                  value={jawabanInput}
+                  onChange={(e) => setJawabanInput(e.target.value)}
+                  placeholder={
+                    isListeningJawaban
+                      ? "Silakan bicara, tim tercepat..."
+                      : `Ketik transkrip jawaban lisan dari ${
+                          kontestans.find((k) => k.id === buzzerWinner)?.nama
+                        }...`
+                  }
+                  className="pr-12 h-12 text-base"
+                />
+                <Button
+                  type="button"
+                  size="icon"
+                  variant={isListeningJawaban ? "destructive" : "secondary"}
+                  onClick={toggleVoiceJawaban}
+                  className="absolute right-1.5 h-9 w-9"
+                >
+                  {isListeningJawaban ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                </Button>
+              </div>
+              <Button
+                onClick={handleProsesPenilaian}
+                disabled={loading || !jawabanInput.trim() || isListeningJawaban}
+                className="w-full"
+                size="lg"
+              >
+                {loading ? (
+                  <RefreshCw className="animate-spin w-4 h-4 mr-2" />
+                ) : (
+                  <Sparkles className="w-4 h-4 mr-2" />
+                )}
+                {loading ? "Mengevaluasi..." : "Mulai Evaluasi Semantik"}
+              </Button>
+            </CardContent>
+          </Card>
         )}
 
         {/* OUTPUT HASIL KEPUTUSAN JURI AI */}
         {evaluation && (
-          <div className="space-y-6 animate-in fade-in slide-in-from-top-4 duration-500">
-            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-6 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8">
-                <div className={`text-5xl font-black ${evaluation.skor > 6 ? 'text-emerald-500' : 'text-red-500'}`}>
-                  {evaluation.skor}<span className="text-xl text-slate-600">/10</span>
-                </div>
-              </div>
-
-              <div className="border-b border-slate-800 pb-6">
-                <h3 className="text-xl font-bold flex items-center gap-3 text-white">
-                  Hasil Evaluasi Juri AI
-                </h3>
-                <p className="text-sm text-slate-500 mt-1">Status: Keputusan bersifat mutlak berdasarkan dokumen negara resmi.</p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-slate-950/80 p-6 rounded-2xl border border-slate-800/50">
-                  <div className="text-[10px] text-blue-400 font-black uppercase tracking-[0.2em] mb-3">Kunci Jawaban Resmi</div>
-                  <p className="text-sm text-slate-300 leading-relaxed font-medium">{evaluation.kunci_jawaban}</p>
-                  <div className="inline-block mt-4 px-3 py-1 bg-slate-900 rounded-lg text-[10px] text-slate-500 border border-slate-800">
-                    📚 {evaluation.sumber_dokumen}
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <CardTitle>Hasil Evaluasi Juri AI</CardTitle>
+                    <CardDescription className="mt-1">
+                      Status: Keputusan bersifat mutlak berdasarkan dokumen negara resmi.
+                    </CardDescription>
+                  </div>
+                  <div
+                    className={`text-4xl font-bold tabular-nums ${
+                      evaluation.skor > 6 ? "text-emerald-600 dark:text-emerald-400" : "text-destructive"
+                    }`}
+                  >
+                    {evaluation.skor}
+                    <span className="text-lg text-muted-foreground">/10</span>
                   </div>
                 </div>
-                <div className="bg-slate-950/80 p-6 rounded-2xl border border-slate-800/50">
-                  <div className="text-[10px] text-indigo-400 font-black uppercase tracking-[0.2em] mb-3">Pertimbangan Semantik</div>
-                  <p className="text-sm text-slate-300 leading-relaxed italic">&quot;{evaluation.alasan}&quot;</p>
+              </CardHeader>
+              <Separator />
+              <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6">
+                <Card className="bg-muted/40">
+                  <CardContent className="pt-6">
+                    <div className="text-xs text-primary font-semibold uppercase tracking-wide mb-3">
+                      Kunci Jawaban Resmi
+                    </div>
+                    <p className="text-sm leading-relaxed">{evaluation.kunci_jawaban}</p>
+                    <Badge variant="outline" className="mt-4 gap-1.5">
+                      <BookOpen className="w-3 h-3" />
+                      {evaluation.sumber_dokumen}
+                    </Badge>
+                  </CardContent>
+                </Card>
+                <Card className="bg-muted/40">
+                  <CardContent className="pt-6">
+                    <div className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold uppercase tracking-wide mb-3">
+                      Pertimbangan Semantik
+                    </div>
+                    <p className="text-sm leading-relaxed italic text-muted-foreground">
+                      &quot;{evaluation.alasan}&quot;
+                    </p>
+                  </CardContent>
+                </Card>
+              </CardContent>
+              <CardFooter>
+                <Button onClick={resetRound}>
+                  Lanjut Pertanyaan Berikutnya <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </CardFooter>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+                  Knowledge Retrieval Logs
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-muted/40 border rounded-lg p-4 text-xs font-mono text-muted-foreground max-h-48 overflow-y-auto leading-loose">
+                  {evaluation.raw_context}
                 </div>
-              </div>
-
-              <div className="pt-4 flex justify-start mx-auto">
-                 <button onClick={resetRound} className="w-fit bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-2xl text-sm font-bold text-white transition flex items-center gap-2 shadow-lg shadow-blue-600/20 cursor-pointer">
-                   Lanjut Pertanyaan Berikutnya <RefreshCw className="w-4 h-4" />
-                 </button>
-              </div>
-            </div>
-
-            <div className="bg-slate-900/30 border border-slate-800/50 rounded-3xl p-6">
-              <div className="text-xs font-black text-slate-500 mb-4 uppercase tracking-[0.3em] px-2">Knowledge Retrieval Logs</div>
-              <div className="bg-slate-950/50 border border-slate-800 rounded-2xl p-6 text-xs text-slate-400 font-mono max-h-48 overflow-y-auto leading-loose">
-                {evaluation.raw_context}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         )}
       </main>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Radio, Lock } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface BuzzerProps {
   namaTim: string;
@@ -26,27 +27,26 @@ export default function Buzzer({
   colorScheme,
 }: BuzzerProps) {
   return (
-    <div className="flex flex-col items-center justify-center bg-slate-900/40 border border-slate-800 p-8 rounded-3xl backdrop-blur-xs shadow-xl relative overflow-hidden">
-      
+    <div className="flex flex-col items-center justify-center bg-card border rounded-3xl p-8 shadow-sm relative overflow-hidden">
       {/* Badge Status di Atas Tombol */}
       <div className="mb-6 z-10">
         {isLockedOut ? (
-          <span className="bg-red-500/10 text-red-400 border border-red-500/25 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-            ❌ Jawaban Salah
-          </span>
+          <Badge variant="destructive" className="uppercase tracking-wider gap-1">
+            <Lock className="w-3 h-3" /> Jawaban Salah
+          </Badge>
         ) : isActive ? (
-          <span className="bg-amber-500/10 text-amber-400 border border-amber-500/25 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider animate-pulse">
-            AYO JAWAB!
-          </span>
+          <Badge className={`${colorScheme.badgeBg} ${colorScheme.badgeText} border-0 uppercase tracking-wider animate-pulse`}>
+            Ayo Jawab!
+          </Badge>
         ) : isDisabled ? (
-          <span className="bg-slate-950 text-slate-600 border border-slate-800 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+          <Badge variant="secondary" className="uppercase tracking-wider gap-1 text-muted-foreground">
             <Lock className="w-3 h-3" /> Terkunci
-          </span>
+          </Badge>
         ) : (
-          <span className={`${colorScheme.badgeBg} ${colorScheme.badgeText} border border-current/10 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5`}>
+          <Badge variant="outline" className={`${colorScheme.badgeText} uppercase tracking-wider gap-1.5`}>
             <span className={`w-2 h-2 rounded-full ${colorScheme.text} bg-current animate-ping`} />
             Tekan!
-          </span>
+          </Badge>
         )}
       </div>
 
@@ -56,32 +56,30 @@ export default function Buzzer({
         onClick={onClick}
         className={`w-40 h-40 rounded-full border-4 flex flex-col items-center justify-center gap-2 transition-all duration-300 relative select-none cursor-pointer outline-none ${
           isActive
-            ? `${colorScheme.bg} ${colorScheme.border} ${colorScheme.glow} scale-105 active:scale-100`
+            ? `${colorScheme.bg} ${colorScheme.border} ${colorScheme.glow} scale-105 active:scale-100 text-white`
             : isLockedOut
-            ? 'bg-red-950/20 border-red-900/30 text-red-800 opacity-40 shadow-inner'
-            : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700 hover:scale-102 active:scale-98 shadow-2xl'
+            ? "bg-destructive/10 border-destructive/20 text-destructive/50 opacity-60 shadow-inner"
+            : "bg-muted border-border text-muted-foreground hover:border-foreground/20 hover:scale-102 active:scale-98 shadow-md"
         }`}
         style={{
-          boxShadow: isActive 
-            ? `0 0 40px ${colorScheme.text}40, inset 0 -8px 0 rgba(0,0,0,0.4), inset 0 8px 0 rgba(255,255,255,0.2)` 
-            : isDisabled 
-            ? 'none' 
-            : 'inset 0 -8px 0 rgba(0,0,0,0.5), inset 0 4px 0 rgba(255,255,255,0.05)'
+          boxShadow: isActive
+            ? `0 0 40px var(--tw-shadow-color, rgba(0,0,0,0.2)), inset 0 -8px 0 rgba(0,0,0,0.25), inset 0 8px 0 rgba(255,255,255,0.15)`
+            : isDisabled
+            ? "none"
+            : "inset 0 -6px 0 rgba(0,0,0,0.08), inset 0 3px 0 rgba(255,255,255,0.4)",
         }}
       >
         {/* Lapisan Mengkilap (Glossy Effect) */}
         {!isDisabled && !isLockedOut && (
-          <div className="absolute top-0 left-0 w-full h-1/2 bg-white/5 rounded-t-full pointer-events-none" />
+          <div className="absolute top-0 left-0 w-full h-1/2 bg-white/10 rounded-t-full pointer-events-none" />
         )}
 
-        <Radio className={`w-10 h-10 transition-transform ${isActive ? 'animate-bounce text-white' : ''}`} />
-        <span className={`text-2xl font-black tracking-wider ${isActive ? 'text-white' : 'text-slate-200'}`}>
-          BUZZ
-        </span>
+        <Radio className={`w-10 h-10 transition-transform ${isActive ? "animate-bounce" : ""}`} />
+        <span className="text-2xl font-black tracking-wider">BUZZ</span>
       </button>
 
       {/* Identitas Nama Regu Kontestan */}
-      <div className="mt-5 font-black text-2xl tracking-wide text-slate-300 uppercase z-10">
+      <div className="mt-5 font-black text-2xl tracking-wide text-foreground uppercase z-10">
         {namaTim}
       </div>
     </div>
