@@ -43,6 +43,14 @@ interface EvaluationResult {
   raw_context: string;
 }
 
+interface HistoryItem extends EvaluationResult {
+  id: string;
+  namaTim: string;
+  pertanyaan: string;
+  jawaban: string;
+  timestamp: Date;
+}
+
 // Dipakai untuk buzzer (bg/border/glow saat aktif) dan aksen kecil (dot leaderboard, badge "Tekan!").
 const COLOR_SCHEMES: { [key: number]: any } = {
   1: {
@@ -120,6 +128,7 @@ export default function LCCDashboard() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
+  const [historyItems, setHistoryItems] = useState<HistoryItem[]>([]);
 
   // Voice to Text States
   const [isListeningPertanyaan, setIsListeningPertanyaan] = useState<boolean>(false);
@@ -267,6 +276,19 @@ export default function LCCDashboard() {
       const data: EvaluationResult = await res.json();
       setEvaluation(data);
 
+      // Add to history
+      setHistoryItems((prev) => [
+        {
+          ...data,
+          id: Date.now().toString(),
+          namaTim: activeTeam?.nama || "Kontestan",
+          pertanyaan: pertanyaan,
+          jawaban: jawabanInput,
+          timestamp: new Date(),
+        },
+        ...prev,
+      ]);
+
       if (data.skor > 0) {
         setKontestans((prev) =>
           prev.map((k) =>
@@ -296,6 +318,10 @@ export default function LCCDashboard() {
     setIsTimerActive(false);
   };
 
+  const clearHistory = () => {
+    setHistoryItems([]);
+  };
+
   if (!gameStarted) {
     return (
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
@@ -304,7 +330,7 @@ export default function LCCDashboard() {
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <Shield className="w-7 h-7" />
             </div>
-            <CardTitle className="text-2xl">SmartJuri-AI Arena</CardTitle>
+            <CardTitle className="text-2xl">ScoreHub</CardTitle>
             <CardDescription>
               Konfigurasi jumlah kontestan untuk memulai kompetisi cerdas cermat otomatis.
             </CardDescription>
@@ -338,7 +364,7 @@ export default function LCCDashboard() {
             <div className="bg-primary text-primary-foreground p-2 rounded-lg">
               <Shield className="w-5 h-5" />
             </div>
-            <span className="font-semibold text-lg tracking-tight">SmartJuri-AI</span>
+            <span className="font-semibold text-xl tracking-tight">ScoreHub</span>
           </div>
 
           <div className="space-y-3">
@@ -403,9 +429,9 @@ export default function LCCDashboard() {
         {/* Header Dashboard & Timer Panel */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 pb-6 border-b">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">Evaluation Dashboard</h1>
+            <h1 className="text-2xl font-semibold tracking-tight">Selamat Datang di Arena Cerdas Cermat</h1>
             <p className="text-sm text-muted-foreground mt-1">
-              Enter contest details and team answers for semantic analysis.
+              Evaluasi dan analisis jawaban kontestan.
             </p>
           </div>
 
@@ -483,7 +509,7 @@ export default function LCCDashboard() {
           <Card>
             <CardHeader>
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-semibold">
-                Contestant Submissions (Buzzer)
+                Tekan Tombol Buzzer!
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -562,7 +588,7 @@ export default function LCCDashboard() {
                 ) : (
                   <Sparkles className="w-4 h-4 mr-2" />
                 )}
-                {loading ? "Mengevaluasi..." : "Mulai Evaluasi Semantik"}
+                {loading ? "Mengevaluasi..." : "Mulai Menilai!"}
               </Button>
             </CardContent>
           </Card>
@@ -591,7 +617,7 @@ export default function LCCDashboard() {
                 </div>
               </CardHeader>
               <Separator />
-              <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6">
+              <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-0">
                 <Card className="bg-muted/40">
                   <CardContent className="pt-6">
                     <div className="text-xs text-primary font-semibold uppercase tracking-wide mb-3">
@@ -635,6 +661,83 @@ export default function LCCDashboard() {
               </CardContent>
             </Card>
           </div>
+        )}
+
+        {/* HISTORY JAWABAN PESERTA SEBELUMNYA */}
+        {historyItems.length > 0 && (
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0">
+              <div>
+                <CardTitle>Riwayat Jawaban Peserta</CardTitle>
+                <CardDescription className="mt-1">
+                  Log evaluasi dari {historyItems.length} jawaban sebelumnya
+                </CardDescription>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={clearHistory}
+                className="text-destructive hover:text-destructive"
+              >
+                <RefreshCw className="w-3.5 h-3.5 mr-1.5" /> Hapus History
+              </Button>
+            </CardHeader>
+            <Separator />
+            <CardContent className="pt-6">
+              <div className="space-y-4 max-h-96 overflow-y-auto">
+                {historyItems.map((item) => {
+                  const scheme = COLOR_SCHEMES[item.namaTim.charCodeAt(item.namaTim.length - 1) % 6 + 1] || COLOR_SCHEMES[1];
+                  return (
+                    <div
+                      key={item.id}
+                      className="border rounded-lg p-4 bg-muted/40 hover:bg-muted/60 transition-colors"
+                    >
+                      <div className="flex items-start justify-between gap-4 mb-3">
+                        <div className="flex items-center gap-3">
+                          <span className={`h-3 w-3 rounded-full ${scheme.dot}`} />
+                          <div>
+                            <div className="font-medium text-sm">{item.namaTim}</div>
+                            <div className="text-xs text-muted-foreground">
+                              {item.timestamp.toLocaleTimeString("id-ID")}
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          className={`text-lg font-bold tabular-nums ${
+                            item.skor > 6
+                              ? "text-emerald-600 dark:text-emerald-400"
+                              : "text-destructive"
+                          }`}
+                        >
+                          {item.skor}/10
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div>
+                          <div className="text-xs font-semibold text-muted-foreground uppercase mb-1">
+                            Pertanyaan
+                          </div>
+                          <p className="text-foreground line-clamp-2">{item.pertanyaan}</p>
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold text-muted-foreground uppercase mb-1">
+                            Jawaban Peserta
+                          </div>
+                          <p className="text-foreground line-clamp-2">{item.jawaban}</p>
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold text-muted-foreground uppercase mb-1">
+                            Kunci Jawaban
+                          </div>
+                          <p className="text-foreground line-clamp-2">{item.kunci_jawaban}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
         )}
       </main>
     </div>
